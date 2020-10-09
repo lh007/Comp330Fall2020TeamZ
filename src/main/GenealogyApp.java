@@ -1,4 +1,4 @@
-package wip;
+package src.main;
 import java.lang.Object;
 
 public class GenealogyApp {

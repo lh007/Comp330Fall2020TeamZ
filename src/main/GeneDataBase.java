@@ -1,4 +1,4 @@
-package cycle1;
+package src.main;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
