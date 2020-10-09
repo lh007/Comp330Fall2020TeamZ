@@ -15,22 +15,22 @@ public class PersonTest {
     }
 
     @Test
-    public void testCalculateAge() {
+    public void testCalculateAge1() {
         // TODO 
     }
 
     @Test
-    public void testRelateParents() {
+    public void testRelateParents1() {
         // TODO 
     }
 
     @Test
-    public void testRelateSiblings() {
+    public void testRelateSiblings1() {
         // TODO 
     }
 
     @Test
-    public void testRelateSpouse() {
+    public void testRelateSpouse1() {
         // TODO 
     }
 
