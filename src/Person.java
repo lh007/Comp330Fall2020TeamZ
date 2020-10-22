@@ -1,4 +1,5 @@
 package src;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.Period;
@@ -44,8 +45,8 @@ public class Person {
     private String parentID;
     private String spouse;
     private String[] marriageDetails;
-    public String[] children;
-    private String[] parents;
+    public ArrayList<String> children;
+    public ArrayList<String> parents;
 
     public Person(String [] personalData){
         String d;
@@ -65,7 +66,8 @@ public class Person {
         deathPlace = personalData[7];
         parentID = personalData[8];
         spouse = "N/a";
-        children = new String[5];
+        children = new ArrayList<>();
+        parents = new ArrayList<>();
         if(!dob.equals("N/a")) {
             if (dod.equals("N/a")) {
                 age = calculateAge(dob);
@@ -115,10 +117,6 @@ public class Person {
         this.marriageDetails = marriageDetails;
     }
 
-    public void setParents(String[] parents) {
-        this.parents = parents;
-    }
-
     //getters
     public String getSpouse() { return spouse; }
 
@@ -142,9 +140,9 @@ public class Person {
 
     public String getParentID() { return parentID; }
 
-    public String[] getChildren() { return children; }
+    public ArrayList<String> getChildren() { return children; }
 
-    public String [] getParents() { return parents; }
+    public ArrayList<String> getParents() { return parents; }
 
     public String[] getMarriageDetails() { return marriageDetails; }
 }
