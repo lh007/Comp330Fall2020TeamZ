@@ -1,4 +1,4 @@
-package wip;
+package test;
 
 public class PersonTest
 {

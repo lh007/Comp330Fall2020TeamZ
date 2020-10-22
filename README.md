@@ -5,6 +5,6 @@ Requirements Document - https://docs.google.com/document/d/1Pn0ZMrkAtsCYz4IrbIAo
 
 Team Meeting Notes - https://docs.google.com/document/d/1tLV0K2dg8RNIJ_dq_aUmzdrFms9TgWFFD-GudAl0RtA/edit
 
-**Please ignore the wip (work in progress) folder**
+**Please ignore the test (work in progress) folder**
 
 We are working on a Main class in this folder but it does not have functionality yet. Our code is currently nonfunctional since we divided the classes into folders.

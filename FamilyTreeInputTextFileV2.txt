@@ -1,0 +1,58 @@
+Person,35,,,,,,,
+P1,Johnson,Dick,Jr,09/01/1940,Flint,12/30/2020,Lansing,R1
+P2,Johnson,Jane Sarah, ,6/15/1942,Saginaw, , ,R1
+P3,Johnson,Sally Abigale,BVM,04/04/1945,Flint, , ,R1
+P6,Johnson,Dick, ,03/01/1915,Detroit,06/13/1985,Ann Arbor,N/a
+P7,Smith,Sarah Susan, ,01/12/1920,Chicago, , ,R2
+P8,Smith,Walter Jay,III, , ,02/19/1950,Houston,R5
+P10,Lopez,Christine Ann, ,04/09/1900,Dayton, , ,N/a
+P13,Smith,Betty Jane, ,10/08/1935,Lansing, , ,R3
+P9,Johnson,Dick,III,05/05/1971,Flint, , ,R6
+P15,Smith,John J, ,09/09/1888,Chicago, , ,R5
+P16,Smith,John J, , , , , ,R7
+P17,Smith,Sally Abigale, , , , , ,R7
+P18,Smith,Henry  Adam, , , , , ,R2
+P19,Jones,Margaret Sue, ,05/16/1898,Houston,11/15/1999,Saginaw,N/a
+P20,Johnson,Samuel Paul,,08/28/1891,Grand Rapids,12/13/1980,Saginaw,N/a
+P21,Johnson,Margaret Jane,,04/23/1915,Saginaw,09/11/2001,New York,N/a
+P23,Lopez,Christine Mary, ,08/12/1931, , , ,N/a
+P25,Johnson,Sara Susan, ,06/06/1975,Flint, , ,R6
+P30,Smith,Christine Betty,,05/05/1979,Evanston, , ,N/a
+P31,Smith,Henry,II ,08/23/1980,Evanston, , ,N/a
+P26,Johnson,Dick,IV,03/05/2001,Flint, , ,N/a
+P27,Smith,John J,,12/04/2003,Flint, , , N/a
+,,,,,,,,
+,,,,,,,,
+Partnership,10,,,,,,,
+R1,P7,P6,06/07/1938,,St Matthew's Flint Michigan, , ,
+R2,P10,P8,07/13/1919,06/04/1930,JP Lansing Michigan, , ,
+R3, ,P8,08/01/1930, ,JP Saginaw Michigan, , ,
+R6, ,P1, , , , , , 
+R5, , , , , , , 
+R7, ,P18, , , , , , 
+R4,P19,P20,02/12/1912, ,JP Las Vegas, , ,
+R8,P17, , , , , , , 
+R9,P30,P9,02/15/2000, ,First Methodist Flint, , ,
+,,,,,,,,
+,,,,,,,,
+Children,,,,,,,,
+R1,P1,,,,,,,
+R1,P2,,,,,,,
+R1,P3,,,,,,,
+R2,P7,,,,,,,
+R3,P13,,,,,,,
+R6,P9,,,,,,,
+R5,P8,,,,,,,
+R5,P15,,,,,,,
+R7,P16,,,,,,,
+R7,P17,,,,,,,
+R2,P18,,,,,,,
+R2,P23,,,,,,,
+R4,P6,,,,,,,
+R4,P21,,,,,,,
+R6,P25,,,,,,,
+R6,P9,,,,,,,
+R8,P30,,,,,,,
+R8,P31,,,,,,,
+R9,P26,,,,,,,
+R9,P27,,,,,,,
