@@ -17,6 +17,7 @@ public class GeneDataBase {
 
 
     private final HashMap<String, Person> geneMap = new HashMap<>();
+    private final String fileName = "FamilyTreeInputTextFileV2.txt";
 
     public GeneDataBase() {
 
@@ -27,7 +28,6 @@ public class GeneDataBase {
         String[] inputArray;
         String[] splitLine;
         String line;
-        String fileName = "FamilyTreeInputTextFileV2.txt";
         input = new String(readAllBytes(Paths.get(fileName)));
         inputArray = input.split("\n");
         boolean done =false;
@@ -38,6 +38,7 @@ public class GeneDataBase {
                 if (i >= 1 && i <= 22) {
                     Person p = new Person(splitLine);
                     geneMap.put(p.getID(), p);
+                    System.out.println(geneMap.get(p.getID()).toString() + " has been added");
                 } else if (i >= 26 && i <= 33) {
                     createPartnership(splitLine);
                 } else if (i >= 38 && i <= 57) {

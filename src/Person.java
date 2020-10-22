@@ -1,27 +1,9 @@
 package src;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-
-/**
- * Person class
- *
- * @version 3
- *
- * Storge place for all attributes and relationships for an individual, Person object
- *
- */
-
-
 import java.util.ArrayList;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
-import java.util.Iterator;
-
 /**
  * Person class
  *
