@@ -9,7 +9,9 @@ public class GenealogyApp {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        for(Person p : gdb.geneMap.values()){
+            System.out.println(p.rawData());
+        }
 
        /* Person kendall = new Person("P1", "Phillips", "Kendall", "", "11/18/1998", "Rockwall", "", "", "");
 

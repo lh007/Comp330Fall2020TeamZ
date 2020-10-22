@@ -93,6 +93,11 @@ public class Person {
         }
     }
 
+    public String rawData(){
+        String ret = this.toString() + ", ID: " + this.ID + "";//cont
+        return ret;
+    }
+
     //setters add the rest
 
     public void setMarriageDetails(String [] marriageDetails) {

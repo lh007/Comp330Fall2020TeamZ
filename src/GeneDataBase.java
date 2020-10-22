@@ -16,7 +16,7 @@ import static java.nio.file.Files.readAllBytes;
 public class GeneDataBase {
 
 
-    private final HashMap<String, Person> geneMap = new HashMap<>();
+    public final HashMap<String, Person> geneMap = new HashMap<>();
     private final String fileName = "FamilyTreeInputTextFileV2.txt";
 
     public GeneDataBase() {
@@ -30,7 +30,7 @@ public class GeneDataBase {
         String line;
         input = new String(readAllBytes(Paths.get(fileName)));
         inputArray = input.split("\n");
-        boolean done =false;
+        boolean done = false;
         do {
             for (int i = 1; i <= inputArray.length-1; i++) {
                 line = inputArray[i];
@@ -49,7 +49,6 @@ public class GeneDataBase {
             done = true;
         } while (!done);
     }
-
 
     private void createPartnership(String[] data) {
         for (int i = 0; i < data.length; i++) {

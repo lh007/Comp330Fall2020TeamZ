@@ -11,7 +11,7 @@ P9,Johnson,Dick,III,05/05/1971,Flint, , ,R6
 P15,Smith,John J, ,09/09/1888,Chicago, , ,R5
 P16,Smith,John J, , , , , ,R7
 P17,Smith,Sally Abigale, , , , , ,R7
-P18,Smith,Henry  Adam, , , , , ,R2
+P18,Smith,Henry Adam, , , , , ,R2
 P19,Jones,Margaret Sue, ,05/16/1898,Houston,11/15/1999,Saginaw,N/a
 P20,Johnson,Samuel Paul,,08/28/1891,Grand Rapids,12/13/1980,Saginaw,N/a
 P21,Johnson,Margaret Jane,,04/23/1915,Saginaw,09/11/2001,New York,N/a
