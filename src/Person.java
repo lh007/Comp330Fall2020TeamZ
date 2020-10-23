@@ -101,8 +101,7 @@ public class Person {
 
     // prints out the full name and ID for a Person in the database.
     public String rawData(){
-        String ret = this.toString() + ", ID: " + this.ID + "";//cont
-        return ret;
+        return this.toString() + ", ID: " + this.ID + ", DOB: " + this.dob + ", Birthplace: " + this.birthPlace + ", DOD: " + this.dod + ", Death place: " + this.deathPlace + ", Parents: " + this.parents.toString() + ", Spouse: " + this.spouse + ", Children: " + this.children.toString();
     }
 
     //setters add the rest
