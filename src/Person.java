@@ -30,6 +30,8 @@ public class Person {
     public ArrayList<String> children;
     public ArrayList<String> parents;
 
+    // constructor. reads in the data given for each element (line) in a String arrray and separates and 
+    // uses this information to create a new Person in the database.
     public Person(String [] personalData){
         String d;
         for (int i=0; i<personalData.length; i++) {
@@ -69,15 +71,18 @@ public class Person {
     // calculates the age of someone given a String dob
     public int calculateAge(String dob) {
         LocalDate currDate = LocalDate.now();
-        return Period.between(formatDate(dob), currDate).getYears();
+        if (dob.equals("N/a")) { return -1; }
+        else { return Period.between(formatDate(dob), currDate).getYears(); }
     }
     // calculates how old someone was when they died given a String dob and a String dod
     // if the method returns -1, the person is still alive
     public int calculateDeathAge(String dob, String dod) {
-        if (dod.equals("")) { return -1; }
+        if (dod.equals("N/a")) { return -1; }
         else { return Period.between(formatDate(dob), formatDate(dod)).getYears(); }
     }
 
+    // creates a new partnership for a Person given a String array and a Person (spouse),
+    // including their marriage details, their spouse, and their children.
     public void newPartnership(String[] data, Person s){
         this.marriageDetails = data;
         s.marriageDetails = data;
@@ -85,6 +90,7 @@ public class Person {
         s.spouse = this.getID();
     }
 
+    // prints out the full name for a Person in the database.
     public String toString() {
         if (!this.suffix.equals("N/a")) {
             return this.givenName + " " + this.familyName + " " + this.suffix;
@@ -93,13 +99,13 @@ public class Person {
         }
     }
 
+    // prints out the full name and ID for a Person in the database.
     public String rawData(){
         String ret = this.toString() + ", ID: " + this.ID + "";//cont
         return ret;
     }
 
     //setters add the rest
-
     public void setMarriageDetails(String [] marriageDetails) {
         this.marriageDetails = marriageDetails;
     }
