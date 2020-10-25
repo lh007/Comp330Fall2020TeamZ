@@ -1,38 +1,21 @@
 TEAM Z GENEALOGY APP
     K. Luck, K. Phillips, K. Taylor, K. Bui, H. Kureishy
 
+NOTES:
+    See refFiles for UML diagram, requirements document, team meeting notes,
+    and use case narrative/model.
+
 SUMMARY:
     The genealogy app begins by reading a provided genealogy document, and
     then creating a family tree based on this data. Once the family tree
     has been created, it should provide a number of quality of life features
     to help the user read and navigate the tree, such as the ability to search
     for members of the tree or add new members. Goal is to create an app that
-    clearly and easily keeps track
+    clearly and easily keeps track.
 
 SCOPE/DEMOGRAPHIC:
     Requirements conscious, with approach of reading in file, searching tree, and
     adding new family members. Additionally, GUI will present all data to user.
-
-SYSTEM REQUIREMENTS:
-    Functional:
-        1. Read in text file of current family tree
-        2. Determine if a given person is known to the app
-        3. Record spouses after reading in a partnership
-        4. Record children and parents given a partnership
-        5. Print out data results when reading in file
-    Nonfunctional:
-        1. Scalability
-        2. Reliability (code does not crash)
-        3. Testability
-        4. Consistency
-        5. Usability
-
-USE CASES:
-    1. Given a family tree, program should
-        i. read in the information
-        ii. interpret information
-        iii. organize data attributes accordingly
-        iv. implement user understandability
 
 CYCLE 2 IMPROVEMENTS:
     1. Add a search method
