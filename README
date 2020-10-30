@@ -20,11 +20,10 @@ SCOPE/DEMOGRAPHIC:
 CYCLE 2 IMPROVEMENTS:
     1. Add a search method
     2. Add Person method (and update text file to reflect)
-    3. Move test code form main to respective Test classes
-    4. Methods for a Person
+    3. Methods for a Person
         i. Find parents
         ii. Find children
         iii. Find grandparents
         iv. Find siblings
         v. display all known data about a person
-    5. Begin graphical implementation (user GUI)
+    4. Begin graphical implementation (user GUI)
