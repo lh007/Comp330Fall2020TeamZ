@@ -2,6 +2,7 @@ package src;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.io.File;
 
 import static java.nio.file.Files.readAllBytes;
 
@@ -100,4 +101,9 @@ public class GeneDataBase {
             }
         }
     }
+
+    public HashMap<String, Person> exportData(){
+        return geneMap;
+    }
+
 }
