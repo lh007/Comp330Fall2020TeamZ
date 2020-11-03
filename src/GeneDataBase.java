@@ -1,4 +1,4 @@
-package src;
+//package src;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -115,22 +115,23 @@ public class GeneDataBase {
     /* add get family member methods here (bio, no in laws) */
 
     // returns IDs of all grandparents
-    // TODO: simplify with loop!
-    public ArrayList<String> getGrandparents() {
+    // TODO checks in case no known grandparents/parents
+    public ArrayList<String> getGrandparents(String id) {
         // get parents
         // TODO: add to Person class?
-        String parentsID = geneMap.get(this).getParentID();
-        String[] marriageArray = geneMap.get(parentsID).getMarriageDetails();
+        String parentsID = geneMap.get(id).getParentRelationshipID();
+        //System.out.println(parentsID); 
+        String[] marriageArray = geneMap.get(parentsID).getMarriageDetails(); //error with getMarriageDetails
         String mother = marriageArray[1];
         String father = marriageArray[2];
         // get maternal grandparents, add to ArrayList
         ArrayList<String> grandparents = new ArrayList<String>();
-        String maternalGPID = geneMap.get(mother).getParentID();
+        String maternalGPID = geneMap.get(mother).getParentRelationshipID();
         String[] maternalGPMArray = geneMap.get(maternalGPID).getMarriageDetails();
         grandparents.add(maternalGPMArray[1]);
         grandparents.add(maternalGPMArray[2]);
         // get paternal grandparents, add to ArrayList
-        String paternalGPID = geneMap.get(father).getParentID();
+        String paternalGPID = geneMap.get(father).getParentRelationshipID();
         String[] paternalGPMArray = geneMap.get(paternalGPID).getMarriageDetails();
         grandparents.add(paternalGPMArray[1]);
         grandparents.add(paternalGPMArray[2]);
@@ -152,9 +153,16 @@ public class GeneDataBase {
 
     public ArrayList<String> getSiblings() {
         // TODO
+        // kind of like grandparents, but instead of finding their parents we find their children and
+        // skip over current person's ID in resulting list
     }
 
     public ArrayList<String> getCousins() {
+        // TODO
+    }
+
+    /* extras, if we have time */
+    public ArrayList<String> getGrandchildren() {
         // TODO
     }
 
@@ -163,6 +171,14 @@ public class GeneDataBase {
     }
 
     public ArrayList<String> getUncles() {
+        // TODO
+    }
+
+    public ArrayList<String> getNieces() {
+        // TODO
+    }
+
+    public ArrayList<String> getNephews() {
         // TODO
     }
 

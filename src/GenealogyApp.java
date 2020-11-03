@@ -1,4 +1,4 @@
-package src;
+//package src;
 
 import java.util.HashMap;
 
@@ -20,6 +20,8 @@ public class GenealogyApp {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        System.out.println(gdb.getGrandparents("P1"));
 
 
         // for each person successfully placed in the database, print out their full name and their ID.
