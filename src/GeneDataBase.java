@@ -115,39 +115,18 @@ public class GeneDataBase {
     /* add get family member methods here (bio, no in laws) */
 
     // returns IDs of all grandparents
-    // TODO checks in case no known grandparents/parents
     public ArrayList<String> getGrandparents(String id) {
-        // get parents
-        // TODO: add to Person class?
-        String parentsID = geneMap.get(id).getParentRelationshipID();
-        //System.out.println(parentsID); 
-        String[] marriageArray = geneMap.get(parentsID).getMarriageDetails(); //error with getMarriageDetails
-        String mother = marriageArray[1];
-        String father = marriageArray[2];
-        // get maternal grandparents, add to ArrayList
+        if (geneMap.get(id) == null) { throw new NullPointerException("Error: this person cannot be found in the database."); };
+        ArrayList<String> parents = geneMap.get(id).getParents();
         ArrayList<String> grandparents = new ArrayList<String>();
-        String maternalGPID = geneMap.get(mother).getParentRelationshipID();
-        String[] maternalGPMArray = geneMap.get(maternalGPID).getMarriageDetails();
-        grandparents.add(maternalGPMArray[1]);
-        grandparents.add(maternalGPMArray[2]);
-        // get paternal grandparents, add to ArrayList
-        String paternalGPID = geneMap.get(father).getParentRelationshipID();
-        String[] paternalGPMArray = geneMap.get(paternalGPID).getMarriageDetails();
-        grandparents.add(paternalGPMArray[1]);
-        grandparents.add(paternalGPMArray[2]);
-
-        // simplified in a indexed for loop
-        /* String parentsID = geneMap.get(this).getParentID();
-        String[] marriageArray = geneMap.get(parentsID).getMarriageDetails();
-        ArrayList<String> grandparents = new ArrayList<String>();
-        for (int i = 1; i < 3; i++) {
-            String parent = marriageArray[i];
-            String grandparentID = geneMap.get(parent).getParentID();
-            String[] grandparentsArray = geneMap.get(grandparentID).getMarriageDetails();
-            grandparents.add(grandparentsArray[1]);
-            grandparents.add(grandparentsArray[2]); 
-        } */
-
+        for (String parent : parents) {
+            for (String grandparent : geneMap.get(parent).getParents()) {
+                if (!grandparents.contains(grandparent)) { grandparents.add(grandparent); }
+            }
+        } 
+        if (grandparents.isEmpty()) { 
+            System.out.println("No grandparents found in the database " + "for person " + id + ".");
+        }
         return grandparents;
     }
 
