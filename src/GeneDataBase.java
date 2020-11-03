@@ -115,10 +115,39 @@ public class GeneDataBase {
     /* add get family member methods here (bio, no in laws) */
 
     // returns IDs of all grandparents
+    // TODO: simplify with loop!
     public ArrayList<String> getGrandparents() {
-        List<String> grandparents = new ArrayList<String>();
+        // get parents
+        // TODO: add to Person class?
         String parentsID = geneMap.get(this).getParentID();
-        
+        String[] marriageArray = geneMap.get(parentsID).getMarriageDetails();
+        String mother = marriageArray[1];
+        String father = marriageArray[2];
+        // get maternal grandparents, add to ArrayList
+        ArrayList<String> grandparents = new ArrayList<String>();
+        String maternalGPID = geneMap.get(mother).getParentID();
+        String[] maternalGPMArray = geneMap.get(maternalGPID).getMarriageDetails();
+        grandparents.add(maternalGPMArray[1]);
+        grandparents.add(maternalGPMArray[2]);
+        // get paternal grandparents, add to ArrayList
+        String paternalGPID = geneMap.get(father).getParentID();
+        String[] paternalGPMArray = geneMap.get(paternalGPID).getMarriageDetails();
+        grandparents.add(paternalGPMArray[1]);
+        grandparents.add(paternalGPMArray[2]);
+
+        // simplified in a indexed for loop
+        /* String parentsID = geneMap.get(this).getParentID();
+        String[] marriageArray = geneMap.get(parentsID).getMarriageDetails();
+        ArrayList<String> grandparents = new ArrayList<String>();
+        for (int i = 1; i < 3; i++) {
+            String parent = marriageArray[i];
+            String grandparentID = geneMap.get(parent).getParentID();
+            String[] grandparentsArray = geneMap.get(grandparentID).getMarriageDetails();
+            grandparents.add(grandparentsArray[1]);
+            grandparents.add(grandparentsArray[2]); 
+        } */
+
+        return grandparents;
     }
 
     public ArrayList<String> getSiblings() {
