@@ -137,4 +137,5 @@ public class Person {
     public ArrayList<String> getParents() { return parents; }
 
     public String[] getMarriageDetails() { return marriageDetails; }
+
 }

@@ -3,6 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 import java.io.File;
+import java.util.List;
 
 import static java.nio.file.Files.readAllBytes;
 
@@ -104,6 +105,36 @@ public class GeneDataBase {
 
     public HashMap<String, Person> exportData(){
         return geneMap;
+    }
+
+    // basic search method for GUI. from then on we can call Person methods on result
+    public Person findPerson(String id) {
+        return geneMap.get(id);
+    }
+
+    /* add get family member methods here (bio, no in laws) */
+
+    // returns IDs of all grandparents
+    public ArrayList<String> getGrandparents() {
+        List<String> grandparents = new ArrayList<String>();
+        String parentsID = geneMap.get(this).getParentID();
+        
+    }
+
+    public ArrayList<String> getSiblings() {
+        // TODO
+    }
+
+    public ArrayList<String> getCousins() {
+        // TODO
+    }
+
+    public ArrayList<String> getAunts() {
+        // TODO
+    }
+
+    public ArrayList<String> getUncles() {
+        // TODO
     }
 
 }
