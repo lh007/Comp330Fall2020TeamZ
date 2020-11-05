@@ -1,4 +1,4 @@
-package src;
+//package src;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -195,42 +195,21 @@ public class GeneDataBase {
         return grandparents;
     }
 
-    public ArrayList<String> getSiblings() {
-        // TODO
+    public ArrayList<String> getSiblings(String id) {
         // kind of like grandparents, but instead of finding their parents we find their children and
         // skip over current person's ID in resulting list
-        return new ArrayList<String>();
-    }
-
-    public ArrayList<String> getCousins() {
-        // TODO
-        return new ArrayList<String>();
-    }
-
-    /* extras, if we have time */
-    public ArrayList<String> getGrandchildren() {
-        // TODO
-        return new ArrayList<String>();
-    }
-
-    public ArrayList<String> getAunts() {
-        // TODO
-        return new ArrayList<String>();
-    }
-
-    public ArrayList<String> getUncles() {
-        // TODO
-        return new ArrayList<String>();
-    }
-
-    public ArrayList<String> getNieces() {
-        // TODO
-        return new ArrayList<String>();
-    }
-
-    public ArrayList<String> getNephews() {
-        // TODO
-        return new ArrayList<String>();
+        if (geneMap.get(id) == null) { System.out.println("This person was not found in the database."); };
+        ArrayList<String> parents = geneMap.get(id).getParents();
+        ArrayList<String> siblings = new ArrayList<String>();
+        for (String parent : parents) {
+            for (String sibling : geneMap.get(parent).getChildren()) {
+                if (!siblings.contains(sibling) && !sibling.equals(id)) { siblings.add(sibling); }
+            }
+        }
+        if (siblings.isEmpty()) { 
+            System.out.println("No siblings found in the database " + "for person " + id + ".");
+        }
+        return siblings;
     }
 
 }
