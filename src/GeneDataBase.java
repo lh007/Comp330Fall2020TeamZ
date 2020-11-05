@@ -3,6 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 import java.io.File;
+import java.util.List;
 
 import static java.nio.file.Files.readAllBytes;
 
@@ -130,4 +131,106 @@ public class GeneDataBase {
     public ArrayList<String> getAllPeople(){
         return allPeople;
     }
+    // basic search method for GUI. from then on we can call Person methods on result
+    public Person findPerson(String id) {
+        return geneMap.get(id);
+    }
+
+    // search method for finding any ID that has the exact first and last name
+    public ArrayList<String> findExactNameID(String familyName, String givenName) {
+        ArrayList<String> result = new ArrayList<String>();
+        for (String id : geneMap.keySet()) {
+            Person current = geneMap.get(id);
+            if (current.getFamilyName().equals(familyName)) {
+                if (current.getGivenName().equals(givenName)) {
+                    result.add(id);
+                }
+            }
+        }
+        if (result.isEmpty()) { System.out.println("This name was not found in the database."); };
+        return result;
+    }
+
+    // search method for finding any ID that has the exact family name
+    public ArrayList<String> findExactSurnameID(String familyName) {
+        ArrayList<String> result = new ArrayList<String>();
+        for (String id : geneMap.keySet()) {
+            Person current = geneMap.get(id);
+            if (current.getFamilyName().equals(familyName)) {
+                result.add(id);
+            }
+        }
+        if (result.isEmpty()) { System.out.println("This name was not found in the database."); };
+        return result;
+    }
+
+    // search method for finding any ID that has the exact first name
+    public ArrayList<String> findExactFirstNameID(String givenName) {
+        ArrayList<String> result = new ArrayList<String>();
+        for (String id : geneMap.keySet()) {
+            Person current = geneMap.get(id);
+            if (current.getGivenName().equals(givenName)) {
+                result.add(id);
+            }
+        }
+        if (result.isEmpty()) { System.out.println("This name was not found in the database."); };
+        return result;
+    }
+
+    /* add get family member methods here (bio, no in laws) */
+
+    // returns IDs of all grandparents
+    public ArrayList<String> getGrandparents(String id) {
+        if (geneMap.get(id) == null) { System.out.println("This person was not found in the database."); };
+        ArrayList<String> parents = geneMap.get(id).getParents();
+        ArrayList<String> grandparents = new ArrayList<String>();
+        for (String parent : parents) {
+            for (String grandparent : geneMap.get(parent).getParents()) {
+                if (!grandparents.contains(grandparent)) { grandparents.add(grandparent); }
+            }
+        } 
+        if (grandparents.isEmpty()) { 
+            System.out.println("No grandparents found in the database " + "for person " + id + ".");
+        }
+        return grandparents;
+    }
+
+    public ArrayList<String> getSiblings() {
+        // TODO
+        // kind of like grandparents, but instead of finding their parents we find their children and
+        // skip over current person's ID in resulting list
+        return new ArrayList<String>();
+    }
+
+    public ArrayList<String> getCousins() {
+        // TODO
+        return new ArrayList<String>();
+    }
+
+    /* extras, if we have time */
+    public ArrayList<String> getGrandchildren() {
+        // TODO
+        return new ArrayList<String>();
+    }
+
+    public ArrayList<String> getAunts() {
+        // TODO
+        return new ArrayList<String>();
+    }
+
+    public ArrayList<String> getUncles() {
+        // TODO
+        return new ArrayList<String>();
+    }
+
+    public ArrayList<String> getNieces() {
+        // TODO
+        return new ArrayList<String>();
+    }
+
+    public ArrayList<String> getNephews() {
+        // TODO
+        return new ArrayList<String>();
+    }
+
 }

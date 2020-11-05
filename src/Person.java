@@ -42,9 +42,9 @@ public class Person {
     private int age;
     private String birthPlace;
     private String deathPlace;
-    private String parentID;
+    private String parentRelationshipID; // returns relationship ID of parents
     private String spouse;
-    private String[] marriageDetails;
+    private String[] marriageDetails; // includes all information about a marriage
     public ArrayList<String> children;
     public ArrayList<String> parents;
     private boolean male;
@@ -67,13 +67,14 @@ public class Person {
         birthPlace = personalData[5];
         dod = personalData[6];
         deathPlace = personalData[7];
-        parentID = personalData[8];
+        parentRelationshipID = personalData[8];
         if(personalData[9].equals("M")){
             male=true;
         }
         else{
             male=false;
         }
+        parentRelationshipID = personalData[8];
         spouse = "N/a";
         children = new ArrayList<>();
         parents = new ArrayList<>();
@@ -129,7 +130,7 @@ public class Person {
         return toString() + ", ID: " + this.ID + ", DOB: " + this.dob + ", Birthplace: " + this.birthPlace + ", DOD: " + this.dod + ", Death place: " + this.deathPlace + ", Parents: " + this.parents.toString() + ", Spouse: " + this.spouse + ", Children: " + this.children.toString();
     }
 
-    //setters add the rest
+    // sets marriage details, including relationship ID, people in the marriage, location, and date
     public void setMarriageDetails(String [] marriageDetails) {
         this.marriageDetails = marriageDetails;
     }
@@ -155,7 +156,7 @@ public class Person {
 
     public String getID() { return ID; }
 
-    public String getParentID() { return parentID; }
+    public String getParentRelationshipID() { return parentRelationshipID; }
 
     public ArrayList<String> getChildren() { return children; }
 

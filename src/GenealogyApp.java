@@ -27,7 +27,30 @@ public class GenealogyApp {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
+        // testing findPerson
+        // shows duplicate of children?
+        System.out.println("Testing findPerson: " + gdb.findPerson("P1").getChildren());
+
+        //testing finding ID methods
+        System.out.println("Testing findExactNameID: " + gdb.findExactNameID("Johnson", "Dick"));
+        System.out.println("Testing findExactNameID: " + gdb.findExactNameID("Biden", "Joe"));
+        System.out.println("Testing findExactSurnameID: " + gdb.findExactSurnameID("Johnson"));
+        System.out.println("Testing findExactSurnameID: " + gdb.findExactSurnameID("Trump"));
+        System.out.println("Testing findExactFirstNameID: " + gdb.findExactFirstNameID("John J"));
+        System.out.println("Testing findExactFirstNameID: " + gdb.findExactFirstNameID("Donald"));
+
+        // testing getGrandparents
+        System.out.println("Testing getGrandparents: " + gdb.getGrandparents("P1"));
+        System.out.println("Testing getGrandparents: " + gdb.getGrandparents("P2"));
+        System.out.println("Testing getGrandparents: " + gdb.getGrandparents("P3"));
+        System.out.println("Testing getGrandparents: " + gdb.getGrandparents("P6"));
+        System.out.println("Testing getGrandparents: " + gdb.getGrandparents("P7"));
+        System.out.println("Testing getGrandparents: " + gdb.getGrandparents("P8"));
+        System.out.println("Testing getGrandparents: " + gdb.getGrandparents("P9"));
+        System.out.println("Testing getGrandparents: " + gdb.getGrandparents("P10"));
+        System.out.println("Testing getGrandparents: " + gdb.getGrandparents("P13"));
+        System.out.println("Testing getGrandparents: " + gdb.getGrandparents("P15"));
 
         // for each person successfully placed in the database, print out their full name and their ID.
         /*for(Person p : gdb.geneMap.values()){
