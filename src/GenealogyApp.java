@@ -10,8 +10,15 @@ public class GenealogyApp {
         GeneDataBase gdb = new GeneDataBase();
         HashMap<String, Person> map = gdb.exportData();
         OutputFile op = new OutputFile(map);
+        AddPersonGUI ap = new AddPersonGUI();
+        int currentID = 32;
+
         try {
             gdb.plantTree();
+            Person p = ap.GUI(gdb.getMales(),gdb.getFemales(),gdb.getAllPeople(), currentID);
+            gdb.geneMap.put(p.getID(),p);
+            currentID++;
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -20,7 +27,7 @@ public class GenealogyApp {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        
 
         // for each person successfully placed in the database, print out their full name and their ID.
         /*for(Person p : gdb.geneMap.values()){

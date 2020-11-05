@@ -13,6 +13,24 @@ import java.util.ArrayList;
  *
  */
 
+ /*The backup: Kieran's big honkin' addPerson function
+ *void addPerson(String ID, String givenName, String familyName, String suffix, String dob, String dod, int age, String birthPlace, String deathPlace, String parentID, String spouse, String[] marriageDetails, ArrayList<String> children, ArrayList<String> parents){
+ * (HMM) this.ID = ID;
+ * this.givenName = givenName;
+ * this.familyName = familyName;
+ * this.suffix = suffix;
+ * this.dob = dob;
+ * this.dod = dod;
+ * (HMM) this.age = age;
+ * this.birthPlace = birthPlace;
+ * this.deathPlace = deathPlace
+ * (HMM) this.parentID = parentID;
+ * this.spouse = spouse;
+ * this.marriageDetails = marriageDetails;
+ * this.children = children;
+ * (HMM) this.parents = parents;
+}*/
+
 public class Person {
 
     private String ID ;
@@ -29,6 +47,7 @@ public class Person {
     private String[] marriageDetails;
     public ArrayList<String> children;
     public ArrayList<String> parents;
+    private boolean male;
 
     // constructor. reads in the data given for each element (line) in a String arrray and separates and 
     // uses this information to create a new Person in the database.
@@ -49,6 +68,12 @@ public class Person {
         dod = personalData[6];
         deathPlace = personalData[7];
         parentID = personalData[8];
+        if(personalData[9].equals("M")){
+            male=true;
+        }
+        else{
+            male=false;
+        }
         spouse = "N/a";
         children = new ArrayList<>();
         parents = new ArrayList<>();
@@ -137,4 +162,6 @@ public class Person {
     public ArrayList<String> getParents() { return parents; }
 
     public String[] getMarriageDetails() { return marriageDetails; }
+
+    public boolean isMale() {return male;}
 }

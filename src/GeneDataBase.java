@@ -19,6 +19,9 @@ public class GeneDataBase {
 
     public final HashMap<String, Person> geneMap = new HashMap<>();
     private final String fileName = "FamilyTreeInputTextFileV2.txt";
+    ArrayList<String> males = new ArrayList<String>();
+    ArrayList<String> females = new ArrayList<String>();
+    ArrayList<String> allPeople = new ArrayList<String>();
 
     public GeneDataBase() {
 
@@ -33,6 +36,7 @@ public class GeneDataBase {
         String[] inputArray;
         String[] splitLine;
         String line;
+
         input = new String(readAllBytes(Paths.get(fileName)));
         inputArray = input.split("\n");
         boolean done = false;
@@ -51,6 +55,15 @@ public class GeneDataBase {
                 }
             }
             System.out.println("File successfully read in");
+            for(Person p:geneMap.values()){
+                allPeople.add(p.getID() + ": " + p.toString());
+                if(p.isMale()){
+                    males.add(p.getID() + ": " + p.toString());
+                }
+                else{
+                    females.add(p.getID() + ": " + p.toString());
+                }
+            }
             done = true;
         } while (!done);
     }
@@ -106,4 +119,15 @@ public class GeneDataBase {
         return geneMap;
     }
 
+    public ArrayList<String> getMales(){
+        return males;
+    }
+
+    public ArrayList<String> getFemales(){
+        return females;
+    }
+
+    public ArrayList<String> getAllPeople(){
+        return allPeople;
+    }
 }
