@@ -19,7 +19,7 @@ import java.util.HashMap;
 
 public class OutputFile {
 
-    HashMap<String, Person> gm;
+    private HashMap<String, Person> gm;
 
 
     public OutputFile(HashMap<String, Person> data){
@@ -28,9 +28,11 @@ public class OutputFile {
 
     public void writeResults() throws IOException {
         File output = File.createTempFile("TreeResults", null);
-        BufferedWriter bf = new BufferedWriter(new FileWriter(output));
+        FileWriter fw = new FileWriter("TreeResults.tmp");
+        BufferedWriter bf = new BufferedWriter(fw);
         try {
             for (Person p : gm.values()) {
+                System.out.println(p.rawData());
                 bf.write(p.rawData());
                 bf.newLine();
             }
