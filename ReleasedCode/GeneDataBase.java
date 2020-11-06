@@ -1,9 +1,6 @@
-package src;
-import java.nio.file.Files;
+package ReleasedCode;
 import java.nio.file.Paths;
 import java.util.*;
-import java.io.File;
-import java.util.List;
 
 import static java.nio.file.Files.readAllBytes;
 
@@ -115,6 +112,11 @@ public class GeneDataBase {
             }
         }
     }
+    //cycle 3 addition to construct new relationships
+   /* private void addNewChild(){
+
+    }*/
+    /* private void addNewMarriage(){}*/
 
     public HashMap<String, Person> exportData(){
         return geneMap;

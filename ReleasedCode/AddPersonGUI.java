@@ -1,4 +1,4 @@
-package src;
+package ReleasedCode;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
@@ -41,10 +41,10 @@ public class AddPersonGUI{
         t1 = new JTextField();
         t2 = new JTextField();
         t3 = new JTextField();
-        t4 = new JTextField();
-        t5 = new JTextField();
-        t6 = new JTextField();
-        t7 = new JTextField();
+        t4 = new JTextField("DD/MM/YYYY");
+        t5 = new JTextField("City, State");
+        t6 = new JTextField("DD/MM/YYYY");
+        t7 = new JTextField("City, State");
         t1.setBounds(150, 30, 200, 30);
         t2.setBounds(150, 70, 200, 30);
         t3.setBounds(150, 110, 200, 30);
@@ -125,6 +125,8 @@ public class AddPersonGUI{
                     }
                     //Otherwise, we create the new Person and go through and start to add all information to a String
                     else {
+                        Object momID = "";
+                        Object dadID ="";
 
                         if (t3.getText().equals("")) {
                             t3.setText("N/a");
@@ -139,6 +141,13 @@ public class AddPersonGUI{
                         } else {
                             sex = "F";
                         }
+                        momID = cb8.getItemAt(cb8.getSelectedIndex());
+                        dadID = cb9.getItemAt(cb9.getSelectedIndex());
+
+                        String [] splitMom = momID.toString().split(":");
+                        String MID = splitMom[0];
+                        String [] splitDad = dadID.toString().split(":");
+                        String DID = splitDad[0];
 
                         dataPull[0] = "N/a";
                         dataPull[1] = t2.getText();
@@ -150,7 +159,7 @@ public class AddPersonGUI{
                         dataPull[7] = t7.getText();
                         dataPull[8] = "N/a";
                         dataPull[9] = sex;
-                        newPerson = new Person(dataPull, currentID);
+                        newPerson = new Person(dataPull, currentID, MID, DID);
                         String msg = "";
                         msg += "Given Name: " + t1.getText() + "\n";
                         msg += "Family Name: " + t2.getText() + "\n";
@@ -179,6 +188,7 @@ public class AddPersonGUI{
                         flag = true;
                     }
                 }while(flag==false);
+                f.dispose();
             }
         });
 
@@ -234,7 +244,6 @@ public class AddPersonGUI{
         f.setVisible(true);
 
        while(flag == false){
-           k++;
            System.out.println();
        }
     }

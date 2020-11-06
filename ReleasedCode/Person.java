@@ -1,9 +1,11 @@
-package src;
+package ReleasedCode;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Person class
  *
@@ -86,7 +88,7 @@ public class Person {
         }
     }
 
-    public Person(String [] personalData, int currentID){
+    public Person(String [] personalData, int currentID, String MID, String DID){
         System.out.println("New person created");
         String personID = "P"+Integer.toString(currentID);
         ID = personID;
@@ -107,6 +109,8 @@ public class Person {
         spouse = "N/a";
         children = new ArrayList<>();
         parents = new ArrayList<>();
+        parents.add(MID);
+        parents.add(DID);
         if(!dob.equals("N/a")) {
             if (dod.equals("N/a")) {
                 age = calculateAge(dob);

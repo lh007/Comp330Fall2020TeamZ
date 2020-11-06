@@ -17,13 +17,5 @@ SCOPE/DEMOGRAPHIC:
     Requirements conscious, with approach of reading in file, searching tree, and
     adding new family members. Additionally, GUI will present all data to user.
 
-CYCLE 2 IMPROVEMENTS:
-    1. Add a search method
-    2. Add Person method (and update text file to reflect)
-    3. Methods for a Person
-        i. Find parents
-        ii. Find children
-        iii. Find grandparents
-        iv. Find siblings
-        v. display all known data about a person
-    4. Begin graphical implementation (user GUI)
+Known bugs:
+    1. Relationships need to be created for new children/marriages added
