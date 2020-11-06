@@ -1,32 +1,45 @@
 package src;
 
 import java.util.HashMap;
+import java.util.*;
 
 public class GenealogyApp {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         // creates new GeneDataBase, and tries to read in the file using plantTree(). If there is a problem,
-        // an exception will be printed. 
+        // an exception will be printed.
+        Scanner keyboard = new Scanner(System.in);
         GeneDataBase gdb = new GeneDataBase();
         HashMap<String, Person> map = gdb.exportData();
         OutputFile op = new OutputFile(map);
         AddPersonGUI ap = new AddPersonGUI();
         int currentID = 32;
+        boolean b = false;
+        Person p = null;
 
         try {
             gdb.plantTree();
-            Person p = ap.GUI(gdb.getMales(),gdb.getFemales(),gdb.getAllPeople(), currentID);
-            gdb.geneMap.put(p.getID(),p);
-            currentID++;
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        try {
-            op.writeResults();
-        } catch (Exception e) {
-            e.printStackTrace();
+        System.out.println("Would you like to add a person?");
+        String response = keyboard.next();
+        if (response.equals("yes")) {
+                ap.GUI(gdb.getMales(), gdb.getFemales(), gdb.getAllPeople(), currentID);
+                p = ap.newPerson;
+                gdb.geneMap.put(p.getID(), p);
+                currentID++;
         }
+            System.out.println("Person successfully added to database!");
+            System.out.println("Are you done?");
+            String exit = keyboard.next();
+            if (exit.equals("yes")) {
+                try {
+                    op.writeResults();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
 
         // testing findPerson
         // shows duplicate of children?
@@ -90,10 +103,10 @@ public class GenealogyApp {
         // for each person successfully placed in the database, print out their full name and their ID.
         /*for(Person p : gdb.geneMap.values()){
             System.out.println(p.rawData());
-        }*/
+        }*//*
 
 
-      /*  // test cases
+             *//*  // test cases
         System.out.println();
         System.out.println("P19's spouse is: " + gdb.geneMap.get("P19").getSpouse());
         System.out.println("P1's spouse is: " + gdb.geneMap.get("P1").getSpouse());
@@ -109,5 +122,5 @@ public class GenealogyApp {
         System.out.println("P26's date of birth is: " + gdb.geneMap.get("P26").getDob());
         System.out.println("P26's name is: " + gdb.geneMap.get("P26").toString());
         System.out.println("P26's name suffix is: " + gdb.geneMap.get("P26").getSuffix());*/
+        }
     }
-}

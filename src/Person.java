@@ -74,7 +74,6 @@ public class Person {
         else{
             male=false;
         }
-        parentRelationshipID = personalData[8];
         spouse = "N/a";
         children = new ArrayList<>();
         parents = new ArrayList<>();
@@ -86,6 +85,38 @@ public class Person {
             }
         }
     }
+
+    public Person(String [] personalData, int currentID){
+        System.out.println("New person created");
+        String personID = "P"+Integer.toString(currentID);
+        ID = personID;
+        familyName = personalData[1];
+        givenName = personalData[2];
+        suffix = personalData[3];
+        dob = personalData[4];
+        birthPlace = personalData[5];
+        dod = personalData[6];
+        deathPlace = personalData[7];
+        parentRelationshipID = personalData[8];
+        if(personalData[9].equals("M")){
+            male=true;
+        }
+        else{
+            male=false;
+        }
+        spouse = "N/a";
+        children = new ArrayList<>();
+        parents = new ArrayList<>();
+        if(!dob.equals("N/a")) {
+            if (dod.equals("N/a")) {
+                age = calculateAge(dob);
+            } else {
+                age = calculateDeathAge(dob, dod);
+            }
+        }
+        System.out.println(this.rawData());
+    }
+
 
     // converts a date given in the form of a String to a LocalDate
     // ref: https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html
@@ -130,9 +161,67 @@ public class Person {
         return toString() + ", ID: " + this.ID + ", DOB: " + this.dob + ", Birthplace: " + this.birthPlace + ", DOD: " + this.dod + ", Death place: " + this.deathPlace + ", Parents: " + this.parents.toString() + ", Spouse: " + this.spouse + ", Children: " + this.children.toString();
     }
 
+    //setters
+
     // sets marriage details, including relationship ID, people in the marriage, location, and date
     public void setMarriageDetails(String [] marriageDetails) {
         this.marriageDetails = marriageDetails;
+    }
+
+    public void setID(String id){
+        this.ID = id;
+    }
+
+    public void setGivenName(String givenName) {
+        this.givenName = givenName;
+    }
+
+    public void setFamilyName(String familyName) {
+        this.familyName = familyName;
+    }
+
+    public void setSuffix(String suffix) {
+        this.suffix = suffix;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
+    public void setDod(String dod) {
+        this.dod = dod;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setBirthPlace(String birthPlace) {
+        this.birthPlace = birthPlace;
+    }
+
+    public void setDeathPlace(String deathPlace) {
+        this.deathPlace = deathPlace;
+    }
+
+    public void setParentRelationshipID(String parentRelationshipID) {
+        this.parentRelationshipID = parentRelationshipID;
+    }
+
+    public void setSpouse(String spouse) {
+        this.spouse = spouse;
+    }
+
+    public void setMale(boolean male) {
+        this.male = male;
+    }
+
+    public void setChildren(ArrayList<String> children) {
+        this.children = children;
+    }
+
+    public void setParents(ArrayList<String> parents) {
+        this.parents = parents;
     }
 
     //getters
