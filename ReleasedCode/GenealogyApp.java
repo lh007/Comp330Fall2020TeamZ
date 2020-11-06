@@ -25,7 +25,7 @@ public class GenealogyApp {
         do {
         System.out.println("What would you like to do? Type a number" + "\n" + "1. Add a person" + "\n" + "2. Search in tree" + "\n" + "3. Exit app");
         String response = keyboard.next();
-        //statements for "Search", "Add", "Exit"; "edit" to come in cycle 3
+        //statements for "Search", "Add", "Exit"; "edit" to come in cycle 3, will also change to switch statements
 
             if (response.equals("1")) {
                 ap.GUI(gdb.getMales(), gdb.getFemales(), gdb.getAllPeople(), currentID);
