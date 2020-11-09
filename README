@@ -17,5 +17,9 @@ SCOPE/DEMOGRAPHIC:
     Requirements conscious, with approach of reading in file, searching tree, and
     adding new family members. Additionally, GUI will present all data to user.
 
-Known bugs:
+KNOWN BUGS:
     1. Relationships need to be created for new children/marriages added
+    2. Parents, Siblings, and Grandparents cannot be found for P26, P27
+    3. Siblings cannot be found for P8. We will address this during Cycle 3.
+    4. Only one child, P13, found for P8. P7, P18 and P23 should also be returned
+    
