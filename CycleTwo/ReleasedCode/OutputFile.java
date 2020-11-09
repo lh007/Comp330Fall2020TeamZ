@@ -1,5 +1,5 @@
-package ReleasedCode;
-//package main.java.ReleasedCode; //for VSCode fix
+package CycleTwo.ReleasedCode;
+//package main.java.CycleTwo.ReleasedCode; //for VSCode fix
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
