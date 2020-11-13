@@ -20,12 +20,17 @@ SCOPE/DEMOGRAPHIC:
 KNOWN BUGS:
     1. Relationships need to be created for new children/marriages added
     2. Parents, Siblings, and Grandparents cannot be found for P26, P27
+        a. FIXED!
     3. Siblings cannot be found for P8. We will address this during Cycle 3.
     4. Only one child, P13, found for P8. P7, P18 and P23 should also be returned
+        a. Address this after adding new relationships
     5. Duplicates, if read in, appear. For example, P9, one of P1's children, is listed twice 
     when getChildren is called for P1. We need to add checks for this.
         a. FIXED, subject to further testing
     6. Children P26 and P27 do not appear for either P9 or P30. Parents P9 and P30 do not appear for
     either child P26 or P27. P26 or P27 are also not registered as siblings.
+        a. Likely related to bug #2
+        b. R9 not read in!!!!
+        c. FIXED!
     
     
