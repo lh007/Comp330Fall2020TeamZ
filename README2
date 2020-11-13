@@ -20,7 +20,7 @@ SCOPE/DEMOGRAPHIC:
 KNOWN BUGS:
     1. Relationships need to be created for new children/marriages added
     2. Parents, Siblings, and Grandparents cannot be found for P26, P27
-        a. FIXED – error in GeneDataBase
+        a. FIXED – read-in error in GeneDataBase
     3. Siblings cannot be found for P8. We will address this during Cycle 3.
         a. Should be fixed when new marriages/children added
     4. Only one child, P13, found for P8. P7, P18 and P23 should also be returned
@@ -30,6 +30,6 @@ KNOWN BUGS:
         a. FIXED, subject to further testing
     6. Children P26 and P27 do not appear for either P9 or P30. Parents P9 and P30 do not appear for
     either child P26 or P27. P26 or P27 are also not registered as siblings.
-        a. FIXED – error in GeneDataBase
+        a. FIXED – read-in error in GeneDataBase
     
     
