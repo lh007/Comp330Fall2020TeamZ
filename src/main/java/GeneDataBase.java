@@ -47,7 +47,7 @@ public class GeneDataBase {
                     Person p = new Person(splitLine);
                     geneMap.put(p.getID(), p);
                     System.out.println(geneMap.get(p.getID()).toString() + " has been added");
-                } else if (i >= 26 && i <= 33) {
+                } else if (i >= 26 && i <= 34) {
                     createPartnership(splitLine);
                 } else if (i >= 38 && i <= 57) {
                     createParents(splitLine);
