@@ -49,6 +49,7 @@ public class Person {
     public ArrayList<String> children;
     public ArrayList<String> parents;
     private boolean male;
+    private String [] newMarriageDetails; //new marriage created after new people are added to hash map
 
     // constructor. reads in the data given for each element (line) in a String arrray and separates and 
     // uses this information to create a new Person in the database.
@@ -101,7 +102,6 @@ public class Person {
             if (dod.equals("N/a")) { age = calculateAge(dob); }
             else { age = calculateDeathAge(dob, dod); }
         }
-        System.out.println(this.rawData());
     }
 
     // converts a date given in the form of a String to a LocalDate
@@ -144,7 +144,7 @@ public class Person {
 
     // prints out the full name and ID for a Person in the database.
     public String rawData(){
-        return toString() + ", ID: " + this.ID + ", DOB: " + this.dob + ", Birthplace: " + this.birthPlace + ", DOD: " + this.dod + ", Death place: " + this.deathPlace + ", Parents: " + this.parents.toString() + ", Spouse: " + this.spouse + ", Children: " + this.children.toString();
+        return toString() + ", ID: " + this.ID + ", DOB: " + this.dob + ", Birthplace: " + this.birthPlace + ", DOD: " + this.dod + ", Death place: " + this.deathPlace + ", Parents: " + this.parents.toString() + ", Spouse: " + this.spouse + ", Children: " + this.children.toString() +", Other marriage: "+ this.newMarriageDetails.toString();
     }
 
     // sets marriage details, including relationship ID, people in the marriage, location, and date
@@ -178,6 +178,8 @@ public class Person {
 
     public void setParents(ArrayList<String> parents) { this.parents = parents; }
 
+    public void setNewMarriageDetails(String [] details){this.newMarriageDetails = details;}
+
     public String getSpouse() { return spouse; }
 
     public String getFamilyName() { return familyName; }
@@ -207,4 +209,6 @@ public class Person {
     public String[] getMarriageDetails() { return marriageDetails; }
 
     public boolean isMale() { return male; }
+
+    public String [] getNewMarriageDetails(){return newMarriageDetails;}
 }

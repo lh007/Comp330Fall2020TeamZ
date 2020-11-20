@@ -10,7 +10,6 @@ import static java.nio.file.Files.readAllBytes;
  *
  * @version 3
  *
- *
  * reads in file, creates hash map to store and relate each Person
  */
 public class GeneDataBase {
@@ -115,10 +114,15 @@ public class GeneDataBase {
         }
     }
     //cycle 3 addition to construct new relationships
-   /* private void addNewChild(){
 
-    }*/
-    /* private void addNewMarriage(){}*/
+    public void createNewMarriage(ArrayList<String> parents, String childID, String [] details){
+        Person mother = geneMap.get(parents.get(0));
+        Person father = geneMap.get(parents.get(1));
+        mother.setNewMarriageDetails(details);
+        father.setNewMarriageDetails(details);
+        mother.children.add(childID);
+        father.children.add(childID);
+    }
 
     public HashMap<String, Person> exportData(){
         return geneMap;
@@ -135,6 +139,7 @@ public class GeneDataBase {
     public ArrayList<String> getAllPeople(){
         return allPeople;
     }
+
     // basic search method for GUI. from then on we can call Person methods on result
     public Person findPerson(String id) {
         if (geneMap.get(id) == null) {
@@ -145,6 +150,9 @@ public class GeneDataBase {
         }
     }
 
+    public ArrayList<Person> getAllPersons(){
+        return (ArrayList<Person>) geneMap.values();
+    }
     // search method for finding any ID that has the exact first and last name
     public ArrayList<String> findExactNameID(String familyName, String givenName) {
         ArrayList<String> result = new ArrayList<String>();
@@ -190,24 +198,24 @@ public class GeneDataBase {
 
     // returns IDs of all children
     public ArrayList<String> getChildren(String id) {
-        if (geneMap.get(id) == null) { 
+        if (geneMap.get(id) == null) {
             System.out.println("This person was not found in the database.");
-            return null; 
+            return null;
         }
         ArrayList<String> children = geneMap.get(id).getChildren();
-        if (children.isEmpty()) { 
+        if (children.isEmpty()) {
             System.out.println("No parents found in the database " + "for person " + id + ".");
         }
         return children;
     }
     // returns IDs of all parents
     public ArrayList<String> getParents(String id) {
-        if (geneMap.get(id) == null) { 
+        if (geneMap.get(id) == null) {
             System.out.println("This person was not found in the database.");
-            return null; 
+            return null;
         }
         ArrayList<String> parents = geneMap.get(id).getParents();
-        if (parents.isEmpty()) { 
+        if (parents.isEmpty()) {
             System.out.println("No parents found in the database " + "for person " + id + ".");
         }
         return parents;
@@ -215,9 +223,9 @@ public class GeneDataBase {
 
     // returns IDs of all grandparents
     public ArrayList<String> getGrandparents(String id) {
-        if (geneMap.get(id) == null) { 
+        if (geneMap.get(id) == null) {
             System.out.println("This person was not found in the database.");
-            return null; 
+            return null;
         }
         ArrayList<String> parents = geneMap.get(id).getParents();
         ArrayList<String> grandparents = new ArrayList<String>();
@@ -225,8 +233,8 @@ public class GeneDataBase {
             for (String grandparent : geneMap.get(parent).getParents()) {
                 if (!grandparents.contains(grandparent)) { grandparents.add(grandparent); }
             }
-        } 
-        if (grandparents.isEmpty()) { 
+        }
+        if (grandparents.isEmpty()) {
             System.out.println("No grandparents found in the database " + "for person " + id + ".");
         }
         return grandparents;
@@ -235,9 +243,9 @@ public class GeneDataBase {
     public ArrayList<String> getSiblings(String id) {
         // kind of like grandparents, but instead of finding their parents we find their children and
         // skip over current person's ID in resulting list
-        if (geneMap.get(id) == null) { 
+        if (geneMap.get(id) == null) {
             System.out.println("This person was not found in the database.");
-            return null; 
+            return null;
         }
         ArrayList<String> parents = geneMap.get(id).getParents();
         ArrayList<String> siblings = new ArrayList<String>();
@@ -246,7 +254,7 @@ public class GeneDataBase {
                 if (!siblings.contains(sibling) && !sibling.equals(id)) { siblings.add(sibling); }
             }
         }
-        if (siblings.isEmpty()) { 
+        if (siblings.isEmpty()) {
             System.out.println("No siblings found in the database " + "for person " + id + ".");
         }
         return siblings;

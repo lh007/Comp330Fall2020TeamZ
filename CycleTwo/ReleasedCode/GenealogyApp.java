@@ -12,7 +12,9 @@ public class GenealogyApp {
         HashMap<String, Person> map = gdb.exportData();
         OutputFile op = new OutputFile(map);
         AddPersonGUI ap = new AddPersonGUI();
+        AddMarriageGUI am = new AddMarriageGUI();
         int currentID = 32;
+        int label = 10;
         Person p = null;
         boolean done = false;
 
@@ -32,7 +34,14 @@ public class GenealogyApp {
                 p = ap.newPerson;
                 gdb.geneMap.put(p.getID(), p);
                 currentID++;
-                System.out.println("Person successfully added to database!");
+                System.out.println("Would you like to add details about this person's parents? Type 'yes' or 'no'");
+                String rep = keyboard.next();
+                if(rep.equals("yes")) {
+                    am.GUI(p.getParents(), label);
+                    String[] details = am.nm;
+                    gdb.createNewMarriage(p.getParents(), p.getID(), details);
+                    label++;
+                }
             } else if (response.equals("2")) {
                 //for cycle 3, will be sent to SearchGUI instead of console
                 System.out.println("What are you looking for?" + "\n" + "1. All data about one person" + "\n" + "2. Siblings of a person" + "\n" + "3. Parents of a person" + "\n" + "4. Grandparents of a person");

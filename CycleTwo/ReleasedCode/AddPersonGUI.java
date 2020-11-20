@@ -8,7 +8,6 @@ import java.util.*;
 public class AddPersonGUI{
     public Person newPerson;
     public boolean flag = false;
-    int k = 1;
     public AddPersonGUI(){
 
     }
@@ -126,8 +125,8 @@ public class AddPersonGUI{
                     }
                     //Otherwise, we create the new Person and go through and start to add all information to a String
                     else {
-                        Object momID = "";
-                        Object dadID ="";
+                        Object mom = "";
+                        Object dad ="";
 
                         if (t3.getText().equals("")) {
                             t3.setText("N/a");
@@ -142,12 +141,12 @@ public class AddPersonGUI{
                         } else {
                             sex = "F";
                         }
-                        momID = cb8.getItemAt(cb8.getSelectedIndex());
-                        dadID = cb9.getItemAt(cb9.getSelectedIndex());
+                        mom = cb8.getItemAt(cb8.getSelectedIndex());
+                        dad = cb9.getItemAt(cb9.getSelectedIndex());
 
-                        String [] splitMom = momID.toString().split(":");
+                        String [] splitMom = mom.toString().split(":");
                         String MID = splitMom[0];
-                        String [] splitDad = dadID.toString().split(":");
+                        String [] splitDad = dad.toString().split(":");
                         String DID = splitDad[0];
 
                         dataPull[0] = "N/a";
@@ -181,14 +180,14 @@ public class AddPersonGUI{
                             msg += "Date of Death: " + t6.getText() + "\n";
                             msg += "Place of Death: " + t7.getText() + "\n";
                         }
-                        msg += "Mother: " + cb8.getItemAt(cb8.getSelectedIndex()) + "\n";
-                        msg += "Father: " + cb9.getItemAt(cb9.getSelectedIndex()) + "\n";
+                        msg += "Mother: " + mom + "\n";
+                        msg += "Father: " + dad + "\n";
 
                         //This string is then added to the dialog box and shown to the user.
                         JOptionPane.showMessageDialog(h, msg);
                         flag = true;
                     }
-                }while(flag==false);
+                }while(!flag);
                 f.dispose();
             }
         });
@@ -245,7 +244,7 @@ public class AddPersonGUI{
         f.setVisible(true);
 
        while(flag == false){
-           System.out.println();
+           System.out.print("");
        }
     }
 } 
