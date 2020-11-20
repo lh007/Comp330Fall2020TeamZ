@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Person class
@@ -96,6 +98,8 @@ public class Person {
         spouse = "N/a";
         children = new ArrayList<>();
         parents = new ArrayList<>();
+        newMarriageDetails = new String[6];
+        marriageDetails = new String[6];
         parents.add(MID);
         parents.add(DID);
         if (!dob.equals("N/a")) {
@@ -144,7 +148,16 @@ public class Person {
 
     // prints out the full name and ID for a Person in the database.
     public String rawData(){
-        return toString() + ", ID: " + this.ID + ", DOB: " + this.dob + ", Birthplace: " + this.birthPlace + ", DOD: " + this.dod + ", Death place: " + this.deathPlace + ", Parents: " + this.parents.toString() + ", Spouse: " + this.spouse + ", Children: " + this.children.toString() +", Other marriage: "+ this.newMarriageDetails.toString();
+        List<String> newMarDets = null;
+        if(newMarriageDetails.equals(null)){
+            newMarDets.set(0, "N/a");
+        }
+        else{
+            newMarDets = Arrays.asList(newMarriageDetails);
+        }
+        String out = toString() + "\n";
+        out += "ID: " + ID + ", DOB: " + dob + ", Birthplace: " + birthPlace + ", Parents: "+ parents.toString()+  ", DOD: " + dod +", Death place: " + deathPlace+ ", Spouse: " + spouse + ", Children: " + children.toString() + ", Other marriage: " + newMarDets.toString();
+        return out;
     }
 
     // sets marriage details, including relationship ID, people in the marriage, location, and date

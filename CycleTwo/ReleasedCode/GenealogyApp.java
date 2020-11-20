@@ -1,5 +1,6 @@
 package CycleTwo.ReleasedCode;
 //package main.java; //for VSCode fix
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -13,9 +14,10 @@ public class GenealogyApp {
         OutputFile op = new OutputFile(map);
         AddPersonGUI ap = new AddPersonGUI();
         AddMarriageGUI am = new AddMarriageGUI();
+        ArrayList<String> emptyParents = new ArrayList<>();
         int currentID = 32;
         int label = 10;
-        Person p = null;
+        Person lastAdded = null;
         boolean done = false;
 
         try {
@@ -25,24 +27,30 @@ public class GenealogyApp {
             e.printStackTrace();
         }
         do {
-        System.out.println("What would you like to do? Type a number" + "\n" + "1. Add a person" + "\n" + "2. Search in tree" + "\n" + "3. Exit app");
+        System.out.println("What would you like to do? Type a number" + "\n" + "1. Add a person" + "\n"+ "2. Add a marriage" + "\n" + "3. Search in tree" + "\n" + "4. Exit app");
         String response = keyboard.next();
         //statements for "Search", "Add", "Exit"; "edit" to come in cycle 3, will also change to switch statements
 
             if (response.equals("1")) {
                 ap.GUI(gdb.getMales(), gdb.getFemales(), gdb.getAllPeople(), currentID);
-                p = ap.newPerson;
-                gdb.geneMap.put(p.getID(), p);
+                lastAdded = ap.newPerson;
+                gdb.geneMap.put(lastAdded.getID(), lastAdded);
                 currentID++;
-                System.out.println("Would you like to add details about this person's parents? Type 'yes' or 'no'");
-                String rep = keyboard.next();
-                if(rep.equals("yes")) {
-                    am.GUI(p.getParents(), label);
+            } else if (response.equals("2")){
+                //make more general version of createNewMarriage
+                if(lastAdded!=null) {
+                    am.GUI(gdb.getFemales(), gdb.getMales(), label);
                     String[] details = am.nm;
-                    gdb.createNewMarriage(p.getParents(), p.getID(), details);
+                    gdb.createNewMarriage(lastAdded.getParents(), lastAdded.getID(), details);
                     label++;
                 }
-            } else if (response.equals("2")) {
+                else{
+                    am.GUI(gdb.getFemales(), gdb.getMales(), label);
+                    String[] details = am.nm;
+                    gdb.createNewMarriage(am.married, "", details);
+                    label++;
+                }
+            } else if (response.equals("3")) {
                 //for cycle 3, will be sent to SearchGUI instead of console
                 System.out.println("What are you looking for?" + "\n" + "1. All data about one person" + "\n" + "2. Siblings of a person" + "\n" + "3. Parents of a person" + "\n" + "4. Grandparents of a person");
                 String option = keyboard.next();
@@ -63,7 +71,7 @@ public class GenealogyApp {
                     System.out.println("This persons grandparents are: ");
                     System.out.println(gdb.getGrandparents(idnum).toString());
                 }
-            } else if (response.equals("3")) {
+            } else if (response.equals("4")) {
                 try {
                     op.writeResults();
                     done = true;
