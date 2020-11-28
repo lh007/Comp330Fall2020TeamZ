@@ -106,64 +106,32 @@ public class GeneDataBase {
     }
     //cycle 3 addition to construct new relationships
 
-    public void createNewMarriage(ArrayList<String> partners, String childID, String [] details){
+    public void createNewMarriage(ArrayList<String> partners,String [] details){
         Person mother = geneMap.get(partners.get(0));
         Person father = geneMap.get(partners.get(1));
-        //neither married and child
-        if(mother.getMarriageDetails() == null && father.getMarriageDetails() == null && childID!="") {
-            mother.setMarriageDetails(details);
-            father.setMarriageDetails(details);
-            mother.setSpouse(father.getID());
-            father.setSpouse(mother.getID());
-            mother.children.add(childID);
-            father.children.add(childID);
-        }
         //neither married and no child
-        else if(mother.getMarriageDetails() == null && father.getMarriageDetails() == null && childID.equals("")){
+        if(mother.getMarriageDetails() == null && father.getMarriageDetails() == null){
             mother.setMarriageDetails(details);
             father.setMarriageDetails(details);
             mother.setSpouse(father.getID());
             father.setSpouse(mother.getID());
         }
         //hus married, not wife, no child
-        else if (mother.getMarriageDetails() == null && father.getMarriageDetails()!=null && childID.equals("")){
+        else if (mother.getMarriageDetails() == null && father.getMarriageDetails()!=null){
             father.setNewMarriageDetails(details);
             mother.setMarriageDetails(details);
             mother.setSpouse(father.getID());
         }
         //wife married, not hus, no child
-        else if (mother.getMarriageDetails() != null && father.getMarriageDetails()==null && childID.equals("")){
+        else if (mother.getMarriageDetails() != null && father.getMarriageDetails()==null){
             mother.setNewMarriageDetails(details);
             father.setMarriageDetails(details);
             father.setSpouse(mother.getID());
-        }
-        //hus married, not wife, with child
-        else if (mother.getMarriageDetails() == null && father.getMarriageDetails()!=null && !childID.equals("")){
-            father.setNewMarriageDetails(details);
-            mother.setMarriageDetails(details);
-            mother.setSpouse(father.getID());
-            father.children.add(childID);
-            mother.children.add(childID);
-        }
-        //wife married, not hus, with child
-        else if (mother.getMarriageDetails() != null && father.getMarriageDetails()==null && !childID.equals("")){
-            mother.setNewMarriageDetails(details);
-            father.setMarriageDetails(details);
-            father.setSpouse(mother.getID());
-            father.children.add(childID);
-            mother.children.add(childID);
         }
         //both married, no child
-        else if (mother.getMarriageDetails() !=null && father.getMarriageDetails()!= null && childID.equals("")){
+        else if (mother.getMarriageDetails() !=null && father.getMarriageDetails()!= null){
             mother.setNewMarriageDetails(details);
             father.setNewMarriageDetails(details);
-        }
-        //both married with child
-        else if (mother.getMarriageDetails() !=null && father.getMarriageDetails()!= null && !childID.equals("")){
-            mother.setNewMarriageDetails(details);
-            father.setNewMarriageDetails(details);
-            father.children.add(childID);
-            mother.children.add(childID);
         }
         else{
             System.out.println("Error in marriage");
@@ -176,7 +144,7 @@ public class GeneDataBase {
 
     public ArrayList<String> getMales(){
         for(Person p : geneMap.values()) {
-            if (p.isMale()) {
+            if (p.isMale() && !males.contains(p.getID()+": " + p.toString())) {
                 males.add(p.getID() + ": " + p.toString());
             }
         }
@@ -185,7 +153,7 @@ public class GeneDataBase {
 
     public ArrayList<String> getFemales(){
         for(Person p : geneMap.values()){
-            if(!p.isMale()){
+            if(!p.isMale() && !females.contains(p.getID()+": " + p.toString())){
                 females.add(p.getID() + ": " + p.toString());
             }
         }
@@ -194,6 +162,7 @@ public class GeneDataBase {
 
     public ArrayList<String> getAllPeople(){
         for(Person p : geneMap.values()){
+            if(!allPeople.contains(p.getID() +": " + p.toString()))
             allPeople.add(p.getID() + ": " + p.toString());
         }
         return allPeople;
@@ -317,6 +286,34 @@ public class GeneDataBase {
             System.out.println("No siblings found in the database " + "for person " + id + ".");
         }
         return siblings;
+    }
+
+    public void editEntry(Object person, int option, String update){
+        String [] input = person.toString().split(":");
+        Person p = geneMap.get(input[0]);
+        switch(option){
+            case 0: //given name
+                p.setGivenName(update);
+                break;
+            case 1: //family name
+                p.setFamilyName(update);
+                break;
+            case 2: //suffix
+                p.setSuffix(update);
+                break;
+            case 3: //birthplace
+                p.setBirthPlace(update);
+                break;
+            case 4: //dob
+                p.setDob(update);
+                break;
+            case 5: //death place
+                p.setDeathPlace(update);
+                break;
+            case 6: //dod
+                p.setDod(update);
+                break;
+        }
     }
 
 }

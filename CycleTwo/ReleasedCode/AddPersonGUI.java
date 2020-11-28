@@ -41,9 +41,9 @@ public class AddPersonGUI{
         t1 = new JTextField();
         t2 = new JTextField();
         t3 = new JTextField();
-        t4 = new JTextField("DD/MM/YYYY");
+        t4 = new JTextField("MM/DD/YYYY");
         t5 = new JTextField("City, State");
-        t6 = new JTextField("DD/MM/YYYY");
+        t6 = new JTextField("MM/DD/YYYY");
         t7 = new JTextField("City, State");
         t1.setBounds(150, 30, 200, 30);
         t2.setBounds(150, 70, 200, 30);
@@ -246,5 +246,9 @@ public class AddPersonGUI{
        while(flag == false){
            System.out.print("");
        }
+    }
+
+    public void resetPerson(){
+        newPerson = null;
     }
 } 
