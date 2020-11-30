@@ -16,24 +16,6 @@ import java.util.List;
  *
  */
 
- /*The backup: Kieran's big honkin' addPerson function
- *void addPerson(String ID, String givenName, String familyName, String suffix, String dob, String dod, int age, String birthPlace, String deathPlace, String parentID, String spouse, String[] marriageDetails, ArrayList<String> children, ArrayList<String> parents){
- * (HMM) this.ID = ID;
- * this.givenName = givenName;
- * this.familyName = familyName;
- * this.suffix = suffix;
- * this.dob = dob;
- * this.dod = dod;
- * (HMM) this.age = age;
- * this.birthPlace = birthPlace;
- * this.deathPlace = deathPlace
- * (HMM) this.parentID = parentID;
- * this.spouse = spouse;
- * this.marriageDetails = marriageDetails;
- * this.children = children;
- * (HMM) this.parents = parents;
-}*/
-
 public class Person {
 
     private String ID ;
@@ -155,15 +137,23 @@ public class Person {
         else{
             newMarDets = Arrays.asList(newMarriageDetails);
         }
-        String out = toString() + "\n";
-        out += "ID: " + ID + ", DOB: " + dob + ", Birthplace: " + birthPlace + ", Parents: "+ parents.toString()+  ", DOD: " + dod +", Death place: " + deathPlace+ ", Spouse: " + spouse + ", Children: " + children.toString() + ", Other marriage: " + newMarDets.toString();
+        String out = this.toString() + "--";
+        out += "ID: " + ID;
+        out += ", DOB: " + dob;
+        out+= ", Birthplace: " + birthPlace;
+        out+= ", Parents: "+ parents.toString();
+        out+=  ", DOD: " + dod;
+        out+= ", Death place: " + deathPlace;
+        out += ", Spouse: " + spouse;
+        out+= ", Children: " + children.toString();
+        out+= ", Other marriage: " + newMarDets.toString();
         return out;
     }
 
     // sets marriage details, including relationship ID, people in the marriage, location, and date
     public void setMarriageDetails(String[] marriageDetails) { this.marriageDetails = marriageDetails; }
 
-    public void setID(String id) { this.ID = id; }
+    //public void setID(String id) { this.ID = id; }
 
     public void setGivenName(String givenName) { this.givenName = givenName; }
 
@@ -175,21 +165,21 @@ public class Person {
 
     public void setDod(String dod) { this.dod = dod; }
 
-    public void setAge(int age) { this.age = age; }
+   // public void setAge(int age) { this.age = age; }
 
     public void setBirthPlace(String birthPlace) { this.birthPlace = birthPlace; }
 
     public void setDeathPlace(String deathPlace) { this.deathPlace = deathPlace; }
 
-    public void setParentRelationshipID(String parentRelationshipID) { this.parentRelationshipID = parentRelationshipID; }
+   // public void setParentRelationshipID(String parentRelationshipID) { this.parentRelationshipID = parentRelationshipID; }
 
     public void setSpouse(String spouse) { this.spouse = spouse; }
 
-    public void setMale(boolean male) { this.male = male; }
+   // public void setMale(boolean male) { this.male = male; }
 
-    public void setChildren(ArrayList<String> children) { this.children = children; }
+   // public void setChildren(ArrayList<String> children) { this.children = children; }
 
-    public void setParents(ArrayList<String> parents) { this.parents = parents; }
+   // public void setParents(ArrayList<String> parents) { this.parents = parents; }
 
     public void setNewMarriageDetails(String [] details){this.newMarriageDetails = details;}
 

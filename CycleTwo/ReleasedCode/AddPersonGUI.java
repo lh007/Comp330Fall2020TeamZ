@@ -12,7 +12,7 @@ public class AddPersonGUI{
 
     }
     String[] dataPull = new String[10];
-    public void GUI(ArrayList<String> men, ArrayList<String> women, ArrayList<String> all, int currentID) {
+    public void GUI(ArrayList<String> men, ArrayList<String> women, int currentID) {
         JFrame f = new JFrame("Add Person");
 
 //Creating text labels
@@ -114,80 +114,79 @@ public class AddPersonGUI{
 //Button 1 (The "Okay" Button) Compiles all input info into an output statement
         b1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                do {
-                    //This new frame will be used to display either "Please fill in the rest of the info" or to show the user their info
-                    JFrame h = new JFrame();
-                    //A long list of checks to ensure the user has filled out all necessary info
-                    if (t1.getText().equals("") || t2.getText().equals("") || t4.getText().equals("") || t5.getText().equals("")
-                            || (c1.isSelected() && t6.getText().equals("")) || (c1.isSelected() && t7.getText().equals("")) || (!r1.isSelected() && !r2.isSelected())) {
-                        //If they havent. They are shown a message asking them to complete the form
-                        JOptionPane.showMessageDialog(h, "This form is incomplete. Please fill out all required fields before submitting.");
+
+                //This new frame will be used to display either "Please fill in the rest of the info" or to show the user their info
+                JFrame h = new JFrame();
+                //A long list of checks to ensure the user has filled out all necessary info
+                if (t1.getText().equals("") || t2.getText().equals("") || t4.getText().equals("") || t5.getText().equals("")
+                        || (c1.isSelected() && t6.getText().equals("")) || (c1.isSelected() && t7.getText().equals("")) || (!r1.isSelected() && !r2.isSelected())) {
+                    //If they havent. They are shown a message asking them to complete the form
+                    JOptionPane.showMessageDialog(h, "This form is incomplete. Please fill out all required fields before submitting.");
+                }
+                //Otherwise, we create the new Person and go through and start to add all information to a String
+                else {
+                    Object mom = "";
+                    Object dad ="";
+
+                    if (t3.getText().equals("")) {
+                        t3.setText("N/a");
                     }
-                    //Otherwise, we create the new Person and go through and start to add all information to a String
-                    else {
-                        Object mom = "";
-                        Object dad ="";
-
-                        if (t3.getText().equals("")) {
-                            t3.setText("N/a");
-                        }
-                        if (!c1.isSelected()) {
-                            t6.setText("N/a");
-                            t7.setText("N/a");
-                        }
-                        String sex;
-                        if (r1.isSelected()) {
-                            sex = "M";
-                        } else {
-                            sex = "F";
-                        }
-                        mom = cb8.getItemAt(cb8.getSelectedIndex());
-                        dad = cb9.getItemAt(cb9.getSelectedIndex());
-
-                        String [] splitMom = mom.toString().split(":");
-                        String MID = splitMom[0];
-                        String [] splitDad = dad.toString().split(":");
-                        String DID = splitDad[0];
-
-                        dataPull[0] = "N/a";
-                        dataPull[1] = t2.getText();
-                        dataPull[2] = t1.getText();
-                        dataPull[3] = t3.getText();
-                        dataPull[4] = t4.getText();
-                        dataPull[5] = t5.getText();
-                        dataPull[6] = t6.getText();
-                        dataPull[7] = t7.getText();
-                        dataPull[8] = "N/a";
-                        dataPull[9] = sex;
-                        newPerson = new Person(dataPull, currentID, MID, DID);
-                        String msg = "";
-                        msg += "Given Name: " + t1.getText() + "\n";
-                        msg += "Family Name: " + t2.getText() + "\n";
-                        if (!t3.getText().equals("")) {
-                            msg += "Suffix" + t3.getText() + "\n";
-                        }
-                        msg += "Date of Birth: " + t4.getText() + "\n";
-                        msg += "Place of Birth: " + t5.getText() + "\n";
-                        if (r1.isSelected()) {
-                            msg += "Sex: Male\n";
-                        } else {
-                            msg += "Sex: Female\n";
-                        }
-                        if (!c1.isSelected()) {
-                            msg += "Deceased: No\n";
-                        } else {
-                            msg += "Deceased: Yes\n";
-                            msg += "Date of Death: " + t6.getText() + "\n";
-                            msg += "Place of Death: " + t7.getText() + "\n";
-                        }
-                        msg += "Mother: " + mom + "\n";
-                        msg += "Father: " + dad + "\n";
-
-                        //This string is then added to the dialog box and shown to the user.
-                        JOptionPane.showMessageDialog(h, msg);
-                        flag = true;
+                    if (!c1.isSelected()) {
+                        t6.setText("N/a");
+                        t7.setText("N/a");
                     }
-                }while(!flag);
+                    String sex;
+                    if (r1.isSelected()) {
+                        sex = "M";
+                    } else {
+                        sex = "F";
+                    }
+                    mom = cb8.getItemAt(cb8.getSelectedIndex());
+                    dad = cb9.getItemAt(cb9.getSelectedIndex());
+
+                    String [] splitMom = mom.toString().split(":");
+                    String MID = splitMom[0];
+                    String [] splitDad = dad.toString().split(":");
+                    String DID = splitDad[0];
+
+                    dataPull[0] = "N/a";
+                    dataPull[1] = t2.getText();
+                    dataPull[2] = t1.getText();
+                    dataPull[3] = t3.getText();
+                    dataPull[4] = t4.getText();
+                    dataPull[5] = t5.getText();
+                    dataPull[6] = t6.getText();
+                    dataPull[7] = t7.getText();
+                    dataPull[8] = "N/a";
+                    dataPull[9] = sex;
+                    newPerson = new Person(dataPull, currentID, MID, DID);
+                    String msg = "";
+                    msg += "Given Name: " + t1.getText() + "\n";
+                    msg += "Family Name: " + t2.getText() + "\n";
+                    if (!t3.getText().equals("")) {
+                        msg += "Suffix" + t3.getText() + "\n";
+                    }
+                    msg += "Date of Birth: " + t4.getText() + "\n";
+                    msg += "Place of Birth: " + t5.getText() + "\n";
+                    if (r1.isSelected()) {
+                        msg += "Sex: Male\n";
+                    } else {
+                        msg += "Sex: Female\n";
+                    }
+                    if (!c1.isSelected()) {
+                        msg += "Deceased: No\n";
+                    } else {
+                        msg += "Deceased: Yes\n";
+                        msg += "Date of Death: " + t6.getText() + "\n";
+                        msg += "Place of Death: " + t7.getText() + "\n";
+                    }
+                    msg += "Mother: " + mom + "\n";
+                    msg += "Father: " + dad + "\n";
+
+                    //This string is then added to the dialog box and shown to the user.
+                    JOptionPane.showMessageDialog(h, msg);
+                    flag = true;
+                }
                 f.dispose();
             }
         });
@@ -210,6 +209,7 @@ public class AddPersonGUI{
         b3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 f.dispose();
+                flag = true;
             }
         });
 
@@ -243,9 +243,9 @@ public class AddPersonGUI{
         f.setLayout(null);
         f.setVisible(true);
 
-       while(flag == false){
-           System.out.print("");
-       }
+        while(flag == false){
+            System.out.print("");
+        }
     }
 
     public void resetPerson(){

@@ -29,13 +29,16 @@ public class GenealogyApp {
         }
 
         do {
+            //launch the main menu
             mm.GUI();
+            //check to see if any selection has been made yet, otherwise just print blank line to terminal
             if(mm.selected){
+                //pass in the current selection to switch conditional
                 switch (mm.currentSelection) {
+                    //add new person
                     case 1:
-                        //add new person
                         //finished
-                        ap.GUI(gdb.getMales(), gdb.getFemales(), gdb.getAllPeople(), currentID);
+                        ap.GUI(gdb.getMales(), gdb.getFemales(), currentID);
                         while(ap.newPerson==null){
                             System.out.println();
                         }
@@ -44,23 +47,20 @@ public class GenealogyApp {
                         currentID++;
                         ap.resetPerson();
                         break;
+                    //create new marriage
                     case 2:
-                        //create new marriage
                         //finished
                         am.GUI(gdb.getFemales(), gdb.getMales(), label);
                         String[] details = am.nm;
                         gdb.createNewMarriage(am.married, details);
                         label++;
                         break;
+                    //search family tree
                     case 3:
-                        //search family tree
-
-
-
-
+                        //search gui and processing
                         break;
+                    //edit an entry
                     case 4:
-                        //edit an entry
                         //finished
                         edit.GUI(gdb.getAllPeople());
                         while(edit.option == 7){
@@ -69,8 +69,8 @@ public class GenealogyApp {
                         gdb.editEntry(edit.person, edit.option, edit.update);
                         edit.resetEdits();
                         break;
+                    //exit app
                     case 5:
-                        //exit app
                         //needs to be fixed to close program
                         try {
                             op.writeResults();

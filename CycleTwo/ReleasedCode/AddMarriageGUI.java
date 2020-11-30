@@ -49,38 +49,35 @@ public class AddMarriageGUI {
         b1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JFrame k = new JFrame();
-                do{
-                    nm[0] = "R"+ Integer.toString(label);
-                        nm[1] = cb1.getItemAt(cb1.getSelectedIndex()).toString();
-                        nm[2] = cb2.getItemAt(cb2.getSelectedIndex()).toString();
-                        String [] splitWife = nm[1].split(":");
-                        married.add(splitWife[0]);
-                        String []  splitHus = nm[2].split(":");
-                        married.add(splitHus[0]);
-                    if(t3.getText().equals("MM/DD/YYYY")){
-                        nm[3] = "N/a";
-                    }
-                    else {
-                        nm[3] = t3.getText();
-                    }
-                    if(t4.getText().equals("MM/DD/YYYY")) {
-                        nm[4] = "N/a";
-                    }
-                    else{
-                        nm[4] = t4.getText();
-                    }
-                    if(t5.getText().equals("")) {
-                        nm[5] = "N/a";
-                    }
-                    else {
-                        nm[5] = t5.getText();
-                    }
+                nm[0] = "R"+ Integer.toString(label);
+                nm[1] = cb1.getItemAt(cb1.getSelectedIndex()).toString();
+                nm[2] = cb2.getItemAt(cb2.getSelectedIndex()).toString();
+                String [] splitWife = nm[1].split(":");
+                married.add(splitWife[0]);
+                String []  splitHus = nm[2].split(":");
+                married.add(splitHus[0]);
+                if(t3.getText().equals("MM/DD/YYYY")){
+                    nm[3] = "N/a";
+                }
+                else {
+                    nm[3] = t3.getText();
+                }
+                if(t4.getText().equals("MM/DD/YYYY")) {
+                    nm[4] = "N/a";
+                }
+                else{
+                    nm[4] = t4.getText();
+                }
+                if(t5.getText().equals("")) {
+                    nm[5] = "N/a";
+                }
+                else {
+                    nm[5] = t5.getText();
+                }
 
-                    String out = "Marriage details: " +nm[0]+ "\n"+ nm[1]+ "\n"+nm[2]+ "\n"+nm[3]+ "\n"+nm[4]+ "\n"+nm[5];
-                    JOptionPane.showMessageDialog(k, out);
-                    flag = true;
-
-                }while (flag == false);
+                String out = "Marriage details: " +nm[0]+ "\n"+ nm[1]+ "\n"+nm[2]+ "\n"+nm[3]+ "\n"+nm[4]+ "\n"+nm[5];
+                JOptionPane.showMessageDialog(k, out);
+                flag = true;
                 f.dispose();
             }
         });
@@ -95,6 +92,7 @@ public class AddMarriageGUI {
         b3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 f.dispose();
+                flag = true;
             }
         });
 

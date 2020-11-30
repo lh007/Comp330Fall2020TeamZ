@@ -56,17 +56,15 @@ public class EditGUI {
         b1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String msg ="";
-                do {
-                    JFrame h = new JFrame();
-                    person = cb1.getItemAt(cb1.getSelectedIndex());
-                    option = cb2.getSelectedIndex();
-                    update = t1.getText();
-                    msg+="Changes to: " + person.toString()+"\n";
-                    msg+="Edited: " + cb2.getSelectedItem().toString()+"\n";
-                    msg+="Now: " + update+"\n";
-                    JOptionPane.showMessageDialog(h, msg);
-                    flag = true;
-                }while(flag==false);
+                JFrame h = new JFrame();
+                person = cb1.getItemAt(cb1.getSelectedIndex());
+                option = cb2.getSelectedIndex();
+                update = t1.getText();
+                msg+="Changes to: " + person.toString()+"\n";
+                msg+="Edited: " + cb2.getSelectedItem().toString()+"\n";
+                msg+="Now: " + update+"\n";
+                JOptionPane.showMessageDialog(h, msg);
+                flag = true;
                 f.dispose();
             }
         });
@@ -81,6 +79,7 @@ public class EditGUI {
         b3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 f.dispose();
+                flag = true;
             }
         });
 
