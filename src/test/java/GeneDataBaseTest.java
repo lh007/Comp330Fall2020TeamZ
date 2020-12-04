@@ -7,6 +7,11 @@ import main.java.GeneDataBase;
 public class GeneDataBaseTest {
 
     // TODO add set up and tear down
+
+    /**
+     * Test methods for GeneDataBase test the functionality of the GeneDataBase methods for
+     * the actual people read in to our database using a copy of the geneMap.
+     */
     
     @Test
     public void testCreatePartnership1() {

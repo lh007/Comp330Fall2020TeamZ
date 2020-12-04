@@ -67,11 +67,13 @@ public class GeneDataBase {
         } while (!done);
     }
 
-    // creates a new partnership. a String array is passed in and iterated through.
-    // for each element in the array, if it is not blank, either the geneMap retrieves
-    // names of the members of the partnership and adds them into a new partnership or
-    // sets marriage details depending on the index of the String array that is being
-    // read.
+    /** 
+     * Creates a new partnership. a String array is passed in and iterated through.
+     * for each element in the array, if it is not blank, either the geneMap retrieves
+     * names of the members of the partnership and adds them into a new partnership or
+     * sets marriage details depending on the index of the String array that is being
+     * read.
+     */
     private void createPartnership(String[] data) {
         for (int i = 0; i < data.length; i++) {
             String d = data[i];
