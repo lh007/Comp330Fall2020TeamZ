@@ -1,4 +1,5 @@
-package test.java;
+//package CycleThree.ReleasedCode;
+package test.java; //for VSCode fix
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
