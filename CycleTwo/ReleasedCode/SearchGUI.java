@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.util.*;
 
 public class SearchGUI {  
-void Search(ArrayList<String> people, ArrayList<String> result) {  
+void GUI(ArrayList<String> people, ArrayList<String> result) {  
     JFrame f=new JFrame("Search");  
 
     JLabel l1,l2;

@@ -20,6 +20,7 @@ public class GenealogyApp {
         Person lastAdded;
         boolean done = false;
         ArrayList<String> search = new ArrayList<String>();
+        SearchGUI s = new SearchGUI();
 
 
         try {
@@ -59,6 +60,7 @@ public class GenealogyApp {
                     //search family tree
                     case 3:
                         //search gui and processing
+                        s.GUI(gdb.getAllPeople(), search);
                         break;
                     //edit an entry
                     case 4:
