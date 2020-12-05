@@ -178,9 +178,6 @@ public class GeneDataBase {
         }
     }
 
-    public ArrayList<Person> getAllPersons(){
-        return (ArrayList<Person>) geneMap.values();
-    }
     // search method for finding any ID that has the exact first and last name
     public ArrayList<String> findExactNameID(String familyName, String givenName) {
         ArrayList<String> result = new ArrayList<String>();

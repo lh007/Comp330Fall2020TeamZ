@@ -21,6 +21,7 @@ public class GenealogyApp {
         boolean done = false;
         ArrayList<String> search = new ArrayList<String>();
         SearchGUI s = new SearchGUI();
+        String searchID;
 
 
         try {
@@ -60,7 +61,11 @@ public class GenealogyApp {
                     //search family tree
                     case 3:
                         //search gui and processing
-                        s.GUI(gdb.getAllPeople(), search);
+                        searchID = "";
+                        s.GUI(gdb.getAllPeople(), searchID);
+                        while(searchID.equals("")){
+                            System.out.println();
+                        }
                         break;
                     //edit an entry
                     case 4:

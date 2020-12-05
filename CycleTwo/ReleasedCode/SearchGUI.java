@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.util.*;
 
 public class SearchGUI {  
-void GUI(ArrayList<String> people, ArrayList<String> result) {  
+void GUI(ArrayList<String> people, String ID) {  
     JFrame f=new JFrame("Search");  
 
     JLabel l1,l2;
@@ -30,22 +30,10 @@ void GUI(ArrayList<String> people, ArrayList<String> result) {
     b2.setBounds(200,120,100,40);
 
     b1.addActionListener(new ActionListener(){
-        Object chosen = cb1.getSelectedItem();
-        String [] splitChoice = chosen.toString().split(":");
-        String ID = splitChoice[0];
         public void actionPerformed(ActionEvent e){
-            if(cb2.getSelectedItem().equals("children")){
-
-            }
-            if(cb2.getSelectedItem().equals("parents")){
-
-            }
-            if(cb2.getSelectedItem().equals("grandparents")){
-
-            }
-            if(cb2.getSelectedItem().equals("siblings")){
-
-            }
+            Object chosen = cb1.getSelectedItem();
+            String [] splitChoice = chosen.toString().split(":");
+            ID = splitChoice[0];
         }
     });
     b2.addActionListener(new ActionListener(){
@@ -60,5 +48,9 @@ void GUI(ArrayList<String> people, ArrayList<String> result) {
     f.setSize(390,210);  
     f.setLayout(null);  
     f.setVisible(true);   
-}  
+} 
+
+public void searchDisplay(){
+
+}
 }  
