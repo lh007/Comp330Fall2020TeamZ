@@ -19,6 +19,7 @@ public class GenealogyApp {
         int label = 10;
         Person lastAdded;
         boolean done = false;
+        ArrayList<String> search = new ArrayList<String>();
 
 
         try {
