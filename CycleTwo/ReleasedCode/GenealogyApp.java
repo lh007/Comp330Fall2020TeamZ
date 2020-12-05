@@ -19,9 +19,8 @@ public class GenealogyApp {
         int label = 10;
         Person lastAdded;
         boolean done = false;
-        ArrayList<String> search = new ArrayList<String>();
+        ArrayList<String> searchResult = new ArrayList<String>();
         SearchGUI s = new SearchGUI();
-        String searchID;
 
 
         try {
@@ -61,11 +60,23 @@ public class GenealogyApp {
                     //search family tree
                     case 3:
                         //search gui and processing
-                        searchID = "";
-                        s.GUI(gdb.getAllPeople(), searchID);
-                        while(searchID.equals("")){
+                        s.GUI(gdb.getAllPeople());
+                        while(s.personID==null){
                             System.out.println();
                         }
+                        if(s.searchType.equals("children")){
+                            searchResult = gdb.getChildren(s.personID);
+                        }
+                        if(s.searchType.equals("parents")){
+                            searchResult = gdb.getParents(s.personID);
+                        }
+                        if(s.searchType.equals("grandparents")){
+                            searchResult = gdb.getGrandparents(s.personID);
+                        }
+                        if(s.searchType.equals("siblings")){
+                            searchResult = gdb.getSiblings(s.personID);
+                        }
+                        s.searchDisplay(searchResult);
                         break;
                     //edit an entry
                     case 4:

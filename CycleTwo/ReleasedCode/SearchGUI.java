@@ -5,7 +5,11 @@ import javax.swing.*;
 import java.util.*;
 
 public class SearchGUI {  
-void GUI(ArrayList<String> people, String ID) {  
+    public String personID;
+    public String searchType;
+    public String name;
+    public boolean flag = false;
+void GUI(ArrayList<String> people) {  
     JFrame f=new JFrame("Search");  
 
     JLabel l1,l2;
@@ -33,11 +37,16 @@ void GUI(ArrayList<String> people, String ID) {
         public void actionPerformed(ActionEvent e){
             Object chosen = cb1.getSelectedItem();
             String [] splitChoice = chosen.toString().split(":");
-            ID = splitChoice[0];
+            personID = splitChoice[0];
+            name = splitChoice[2];
+
+            searchType = cb2.getItemAt(cb2.getSelectedIndex());
+            flag = true;
         }
     });
     b2.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
+            flag = true;
             f.dispose(); 
         }
     });
@@ -47,10 +56,26 @@ void GUI(ArrayList<String> people, String ID) {
     f.add(b1); f.add(b2);
     f.setSize(390,210);  
     f.setLayout(null);  
-    f.setVisible(true);   
+    f.setVisible(true); 
+    
+    while(flag == false){
+        System.out.print("");
+    }
 } 
 
-public void searchDisplay(){
-
+public void searchDisplay(ArrayList<String> results){
+    JFrame f=new JFrame("Search Results");
+    String msg = "";
+    if(results.isEmpty()){
+        msg += name + " has no related " + searchType + ".";
+    }
+    else{
+        msg += name + " has the following " + searchType + ":";
+        for(String i:results){
+            msg+= "\n";
+            msg += i;
+        }
+    }
+    JOptionPane.showMessageDialog(f, msg);
 }
 }  
