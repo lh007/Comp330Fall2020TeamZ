@@ -14,7 +14,7 @@ SUMMARY:
     clearly and easily keeps track.
 
 SCOPE/DEMOGRAPHIC:
-    CycleTwo.Requirements conscious, with approach of reading in file, searching tree, and
+    CycleThree.Requirements conscious, with approach of reading in file, searching tree, and
     adding new family members. Additionally, GUI will present all data to user.
 
 KNOWN BUGS:

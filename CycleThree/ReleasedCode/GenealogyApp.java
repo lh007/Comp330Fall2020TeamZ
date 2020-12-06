@@ -1,13 +1,19 @@
-package CycleTwo.ReleasedCode;
+package CycleThree.ReleasedCode;
 //package main.java; //for VSCode fix
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Date;
+
+import static java.lang.System.*;
 
 public class GenealogyApp {
     public static void main(String[] args) {
         // creates new GeneDataBase, and tries to read in the file using plantTree(). If there is a problem,
         // an exception will be printed.
+        Scanner keyboard = new Scanner(in);
         GeneDataBase gdb = new GeneDataBase();
         HashMap<String, Person> map = gdb.exportData();
         OutputFile op = new OutputFile(map);
@@ -42,10 +48,14 @@ public class GenealogyApp {
                         //finished
                         ap.GUI(gdb.getMales(), gdb.getFemales(), currentID);
                         while(ap.newPerson==null){
-                            System.out.println();
+                            out.println();
                         }
                         lastAdded = ap.newPerson;
                         gdb.geneMap.put(lastAdded.getID(), lastAdded);
+                        for(String par: lastAdded.getParents()){
+                            Person pare = gdb.geneMap.get(par);
+                            pare.children.add(lastAdded.getID());
+                        }
                         currentID++;
                         ap.resetPerson();
                         break;
@@ -62,7 +72,7 @@ public class GenealogyApp {
                         //search gui and processing
                         s.GUI(gdb.getAllPeople());
                         while(s.personID==null){
-                            System.out.println();
+                            out.println();
                         }
                         if(s.searchType.equals("children")){
                             searchResult = gdb.getChildren(s.personID);
@@ -84,7 +94,7 @@ public class GenealogyApp {
                         //finished
                         edit.GUI(gdb.getAllPeople());
                         while(edit.option == 7){
-                            System.out.println();
+                            out.println();
                         }
                         gdb.editEntry(edit.person, edit.option, edit.update);
                         edit.resetEdits();
@@ -95,7 +105,7 @@ public class GenealogyApp {
                 }
             }
             else{
-                System.out.println();
+                out.println();
             }
             if(mm.currentSelection!=0){
                 mm.resetSelection();
@@ -107,5 +117,21 @@ public class GenealogyApp {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        finally{
+            out.println("Save TreeResults.tmp file if you would like, the program will time after 1 minute");
+            exitAppNow();
+        }
+    }
+
+    public static void exitAppNow(){
+        Timer timer = new Timer();
+        TimerTask exitApp = new TimerTask() {
+            public void run() {
+                System.exit(0);
+
+            }
+        };
+        Date time = new Date(currentTimeMillis()+60*1000);
+        timer.schedule(exitApp, time);
     }
 }
