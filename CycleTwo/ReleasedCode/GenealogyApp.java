@@ -91,13 +91,7 @@ public class GenealogyApp {
                         break;
                     //exit app
                     case 5:
-                        //needs to be fixed to close program
-                        try {
-                            op.writeResults();
-                            done = true;
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                        done =true;
                 }
             }
             else{
@@ -107,5 +101,11 @@ public class GenealogyApp {
                 mm.resetSelection();
             }
         }while(!done);
+
+        try {
+            op.writeResults();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
