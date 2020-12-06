@@ -109,8 +109,19 @@ public class GeneDataBaseTest {
 
     @Test
     public void testGetMales1() {
-        // TODO
-        fail("not implemented");
+        assertNotNull(sut); // assert sut was initialized
+        // must plant tree manually; does not work with 'Before'
+        try {
+            sut.plantTree();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
+        for (String ID : sut.getMales()) {
+            assertNotNull(sut.getMales());
+            assertEquals(true, sut.findPerson(ID).isMale());
+        }
     }
 
     @Test
