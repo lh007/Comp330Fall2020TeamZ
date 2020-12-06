@@ -77,6 +77,7 @@ public class GenealogyApp {
                             searchResult = gdb.getSiblings(s.personID);
                         }
                         s.searchDisplay(searchResult);
+                        s.resetSearch();
                         break;
                     //edit an entry
                     case 4:
