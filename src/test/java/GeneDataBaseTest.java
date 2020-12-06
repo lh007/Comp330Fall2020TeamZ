@@ -16,6 +16,7 @@ import main.java.Person;
 /**
  * Test methods in GeneDataBaseTest test the functionality of the GeneDataBase
  * class for the actual people read in to our database using a copy of the geneMap.
+ * This class tests the functionality independent of any GUIs.
  */
 public class GeneDataBaseTest {
 
@@ -38,18 +39,18 @@ public class GeneDataBaseTest {
     }
 
     @After
-    public void tearDown() throws Exception { 
-        sut = null; assertNull(sut);
-    }
+    public void tearDown() throws Exception { sut = null; assertNull(sut); }
     
     @Test
     public void testCreatePartnership1() {
         // TODO
+        fail('not implemented');
     }
 
     @Test
     public void testCreateParents1() {
         // TODO
+        fail('not implemented');
     }
 
     /* TODO test methods for adding new relationships */
@@ -57,65 +58,78 @@ public class GeneDataBaseTest {
     @Test
     public void testCreateNewMarriage1() {
         // TODO
+        fail('not implemented');
     }
 
     @Test
     public void testGetMales1() {
         // TODO
+        fail('not implemented');
     }
 
     @Test
     public void testGetFemales1() {
         // TODO
+        fail('not implemented');
     }
 
     @Test
     public void testGetAllPeople1() {
         // TODO
+        fail('not implemented');
     }
 
     @Test
     public void testFindPerson1() {
         // TODO
+        fail('not implemented');
     }
 
     @Test
     public void testFindExactNameID1() {
         // TODO
+        fail('not implemented');
     }
 
     @Test
     public void testFindExactSurnameID1() {
         // TODO
+        fail('not implemented');
     }
 
     @Test
     public void testFindExactFirstNameID1() {
         // TODO
+        fail('not implemented');
     }
 
     @Test
     public void testGetChildren1() {
         // TODO
+        fail('not implemented');
     }
 
     @Test
     public void testGetParents1() {
         // TODO
+        fail('not implemented');
     }
 
     @Test
     public void testGetGrandparents1() {
         // TODO
+        fail('not implemented');
     }
 
     @Test
     public void testGetSiblings1() {
         // TODO
+        fail('not implemented');
     }
 
     @Test
     public void testEditEntry1() {
-        
+        // TODO
+        fail('not implemented');
     }
 }
