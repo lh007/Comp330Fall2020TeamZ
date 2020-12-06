@@ -5,12 +5,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import org.junit.After;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import main.java.Person;
 
@@ -219,18 +214,6 @@ public class PersonTest {
     public void testParents2() {
         sut = new Person(new String[]{"P1"," "," "," "," "," "," "," "," "," "});
         assertEquals("N/a", sut.getParentRelationshipID());
-    }
-
-    /**
-     * tests createPartnership, getChildren
-     */
-    @Test
-    public void testChildren1() {
-        // TODO
-        sut = new Person(new String[]{" "," "," "," "," "," "," "," "," "," "});
-        spouse1 = new Person(new String[]{" "," "," "," "," "," "," "," "," "," "});
-        sut.newPartnership(new String[]{"R1","P3","P4"," "," ",""," "," "," "}, spouse1);
-
     }
 
     @Test

@@ -33,8 +33,7 @@ public class GeneDataBaseTest {
         males = new ArrayList<String>();
         females = new ArrayList<String>();
         allPeople = new ArrayList<String>();
-        sut = new GeneDataBase(copiedMap, file, males, 
-        females, allPeople);
+        sut = new GeneDataBase(copiedMap, file, males, females, allPeople);
         sut.plantTree();
     }
 
