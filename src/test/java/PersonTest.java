@@ -21,15 +21,16 @@ import main.java.Person;
 public class PersonTest {
 
     Person sut; // the main Person object we are creating and testing
-    Person spouse; Person spouse2;// sut's spouse, if applicable for the test
+    Person spouse1; Person spouse2; // sut's spouse, if applicable for the test
+    Person parent1; Person parent2;
     Person child1; Person child2; Person child3; // sut's children, if applicable for the test
 
     @After
     public void tearDown() throws Exception { 
         sut = null;
         assertNull(sut);
-        spouse = null;
-        assertNull(spouse);
+        spouse1 = null;
+        assertNull(spouse1);
         spouse2 = null;
         assertNull(spouse2);
         child1 = null; child2 = null; child3 = null;
@@ -113,7 +114,12 @@ public class PersonTest {
         assertEquals("Johnson", sut.getFamilyName());
         assertEquals("Dick", sut.getGivenName());
         assertEquals("Jr", sut.getSuffix());
-        // TODO add setFamilyName, setGivenName, setSuffix tests
+        sut.setFamilyName("Jackson");
+        sut.setGivenName("Rick");
+        sut.setSuffix("Sr");
+        assertEquals("Jackson", sut.getFamilyName());
+        assertEquals("Rick", sut.getGivenName());
+        assertEquals("Sr", sut.getSuffix());
     }
 
     /**
@@ -123,7 +129,15 @@ public class PersonTest {
     public void testID1() {
         sut = new Person(new String[]{"P0"," "," "," "," ",""," "," "," "," "});
         assertEquals("P0", sut.getID());
-        // TODO add setID tests
+    }
+
+    /**
+     * tests getID
+     */
+    @Test
+    public void testID2() {
+        sut = new Person(new String[]{" "," "," "," "," ",""," "," "," "," "});
+        assertEquals("N/a", sut.getID());
     }
 
     /**
@@ -146,15 +160,15 @@ public class PersonTest {
     @Test
     public void testMarriageDetails1() {
         sut = new Person(new String[]{"P1"," "," "," "," "," "," "," "," "," "});
-        spouse = new Person(new String[]{"P2"," "," "," "," "," "," "," "," "," "});
+        spouse1 = new Person(new String[]{"P2"," "," "," "," "," "," "," "," "," "});
         child1 = new Person (new String[]{"P3"," "," "," "," "," "," "," "," "," "});
         child2 = new Person (new String[]{"P4"," "," "," "," "," "," "," "," "," "});
         sut.newPartnership(new String[]{"R1","P1","P2","01/01/2020","01/02/2020",
-        "Las Vegas","Chicago"," "," "}, spouse);
+        "Las Vegas","Chicago"," "," "}, spouse1);
         assertEquals("P2", sut.getSpouse());
-        assertEquals("P1", spouse.getSpouse());
+        assertEquals("P1", spouse1.getSpouse());
         assertEquals("P2", sut.getMarriageDetails()[2]);
-        assertEquals("P1", spouse.getMarriageDetails()[1]);
+        assertEquals("P1", spouse1.getMarriageDetails()[1]);
     }
 
     /**
@@ -164,11 +178,11 @@ public class PersonTest {
     public void testMarriageDetails2() {
         // the same marriage as before
         sut = new Person(new String[]{"P1"," "," "," "," "," "," "," "," "," "});
-        spouse = new Person(new String[]{"P2"," "," "," "," "," "," "," "," "," "});
+        spouse1 = new Person(new String[]{"P2"," "," "," "," "," "," "," "," "," "});
         sut.newPartnership(new String[]{"R1","P1","P2","01/01/2020","01/02/2020",
-        "Las Vegas","Chicago"," "," "}, spouse);
+        "Las Vegas","Chicago"," "," "}, spouse1);
         assertEquals("P2", sut.getSpouse());
-        assertEquals("P1", spouse.getSpouse());
+        assertEquals("P1", spouse1.getSpouse());
         assertEquals("P2", sut.getMarriageDetails()[2]);
 
         // this time, set new marriage details for SUT
@@ -179,50 +193,62 @@ public class PersonTest {
         assertEquals("P3", sut.getMarriageDetails()[2]);
         assertEquals("P1", spouse2.getSpouse());
         assertEquals("P1", spouse2.getMarriageDetails()[1]);
-        assertEquals("P1", spouse.getSpouse()); // the old spouse is still technically married to P1, but this is on purpose
+        assertEquals("P1", spouse1.getSpouse()); // the old spouse is still technically married to P1, but this is on purpose
                                                 // so we can find all of a person's children across marriages
     }
 
     /**
-     * tests getParents, getParentRelationshipID
+     * tests getParentRelationshipID for a person with a parent relationship ID
+     * note: getting parent's specific IDs from a Person object only works if their parents have been set by the 
+     * addition of a new marriage. this does not work with the initial read-in. For people in the initial read-in,
+     * parents can be found via the GeneDataBase method.
      */
     @Test
     public void testParents1() {
-        // TODO
+        sut = new Person(new String[]{"P1"," "," "," "," "," "," "," ","R1"," "});
+        assertEquals("R1", sut.getParentRelationshipID());
     }
 
     /**
-     * tests getSpouse, getChildren, setSpouse
+     * tests getParentRelationshipID for a person without a parent relationship ID
+     * note: getting parent's specific IDs from a Person object only works if their parents have been set by the 
+     * addition of a new marriage. this does not work with the initial read-in. For people in the initial read-in,
+     * parents can be found via the GeneDataBase method.
      */
     @Test
-    public void testSpouseChildren1() {
-        sut = new Person(new String[]{"P0"," "," "," "," "," "," "," "," "," "});
-        assertEquals("N/a", sut.getSpouse());
-        assertTrue(sut.getChildren().isEmpty());
-        spouse = new Person(new String[]{"P1"," "," "," "," "," "," "," "," "," "});
-        sut.setSpouse(spouse.getID());
-        assertFalse(sut.getSpouse().isEmpty());
-        assertEquals("P1", sut.getSpouse());
-        //Person child1 = new Person(new String[]{"P2"," "," "," "," "," "," "," "," "," "});
-        //Person child2 = new Person(new String[]{"P3"," "," "," "," "," "," "," "," "," "});
-        //sut.setChildren(new ArrayList<String>(Arrays.asList(child1.getID(), child2.getID())));
-        //assertFalse(sut.getChildren().isEmpty());
-        //assertEquals("[P2, P3]", sut.getChildren().toString());
+    public void testParents2() {
+        sut = new Person(new String[]{"P1"," "," "," "," "," "," "," "," "," "});
+        assertEquals("N/a", sut.getParentRelationshipID());
+    }
+
+    /**
+     * tests createPartnership, getChildren
+     */
+    @Test
+    public void testChildren1() {
+        // TODO
+        sut = new Person(new String[]{" "," "," "," "," "," "," "," "," "," "});
+        spouse1 = new Person(new String[]{" "," "," "," "," "," "," "," "," "," "});
+        sut.newPartnership(new String[]{"R1","P3","P4"," "," ",""," "," "," "}, spouse1);
+
     }
 
     @Test
     public void testGender1() {
-        // TODO
+        sut = new Person(new String[]{" "," "," "," "," "," "," "," "," ","M"});
+        assertTrue(sut.isMale());
     }
 
     @Test
     public void testGender2() {
-        // TODO
+        sut = new Person(new String[]{" "," "," "," "," "," "," "," "," ","F"});
+        assertFalse(sut.isMale());
     }
 
     @Test
     public void testGender3() {
-        // TODO
+        sut = new Person(new String[]{" "," "," "," "," "," "," "," "," "," "});
+        assertFalse(sut.isMale());
     }
 
 
