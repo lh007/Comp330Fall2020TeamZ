@@ -21,7 +21,7 @@ import main.java.Person;
 public class PersonTest {
 
     Person sut; // the main Person object we are creating and testing
-    Person spouse; // sut's spouse, if applicable for the test
+    Person spouse; Person spouse2;// sut's spouse, if applicable for the test
     Person child1; Person child2; Person child3; // sut's children, if applicable for the test
 
     @After
@@ -30,6 +30,8 @@ public class PersonTest {
         assertNull(sut);
         spouse = null;
         assertNull(spouse);
+        spouse2 = null;
+        assertNull(spouse2);
         child1 = null; child2 = null; child3 = null;
         assertNull(child1); assertNull(child2); assertNull(child3);
     }
@@ -90,7 +92,7 @@ public class PersonTest {
     }
 
     /**
-     * tests getDob, getAge, getDod for living Person w/o Dob and Dod
+     * tests getDob, getAge, getDod for Person w/o Dob and Dod
      */
     @Test
     public void testDateAge4() {
@@ -99,23 +101,6 @@ public class PersonTest {
         assertEquals(0, sut.getAge());
         assertEquals("N/a", sut.getDod());
         assertEquals(-1, sut.calculateDeathAge(sut.getDob(), sut.getDod()));
-
-    }
-
-    /* test methods for new marriages */
-    @Test
-    public void testMarriage1() {
-        // TODO
-    }
-
-    @Test
-    public void testMarriage2() {
-        // TODO
-    }
-
-    @Test
-    public void testMarriage3() {
-        // TODO
     }
 
     /**
@@ -142,22 +127,60 @@ public class PersonTest {
     }
 
     /**
-     * tests getBirthPlace, getDeathPlace
+     * tests getBirthPlace, getDeathPlace, setBirthPlace, setDeathPlace
      */
     @Test
     public void testBirthDeathPlace1() {
         sut = new Person(new String[]{" "," "," "," "," ","Chicago"," ","Dallas"," "," "});
         assertEquals("Chicago", sut.getBirthPlace());
         assertEquals("Dallas", sut.getDeathPlace());
-        // TODO add setBirthPlace, setDeathPlace tests
+        sut.setBirthPlace("Las Vegas");
+        assertEquals("Las Vegas", sut.getBirthPlace());
+        sut.setDeathPlace("San Francisco");
+        assertEquals("San Francisco", sut.getDeathPlace());
     }
 
     /**
-     * tests getMarriageDetails, setMarriageDetails
+     * tests newPartnership, getSpouse, getMarriageDetails
      */
     @Test
     public void testMarriageDetails1() {
-        // TODO
+        sut = new Person(new String[]{"P1"," "," "," "," "," "," "," "," "," "});
+        spouse = new Person(new String[]{"P2"," "," "," "," "," "," "," "," "," "});
+        child1 = new Person (new String[]{"P3"," "," "," "," "," "," "," "," "," "});
+        child2 = new Person (new String[]{"P4"," "," "," "," "," "," "," "," "," "});
+        sut.newPartnership(new String[]{"R1","P1","P2","01/01/2020","01/02/2020",
+        "Las Vegas","Chicago"," "," "}, spouse);
+        assertEquals("P2", sut.getSpouse());
+        assertEquals("P1", spouse.getSpouse());
+        assertEquals("P2", sut.getMarriageDetails()[2]);
+        assertEquals("P1", spouse.getMarriageDetails()[1]);
+    }
+
+    /**
+     * tests newPartnership, setNewMarriageDetails, getSpouse, getMarriageDetails
+     */
+    @Test
+    public void testMarriageDetails2() {
+        // the same marriage as before
+        sut = new Person(new String[]{"P1"," "," "," "," "," "," "," "," "," "});
+        spouse = new Person(new String[]{"P2"," "," "," "," "," "," "," "," "," "});
+        sut.newPartnership(new String[]{"R1","P1","P2","01/01/2020","01/02/2020",
+        "Las Vegas","Chicago"," "," "}, spouse);
+        assertEquals("P2", sut.getSpouse());
+        assertEquals("P1", spouse.getSpouse());
+        assertEquals("P2", sut.getMarriageDetails()[2]);
+
+        // this time, set new marriage details for SUT
+        spouse2 = new Person(new String[]{"P3"," "," "," "," "," "," "," "," "," "});
+        sut.newPartnership(new String[]{"R2","P1","P3","01/03/2020","01/04/2020",
+        "Chicago","New York"," "," "}, spouse2);
+        assertEquals("P3", sut.getSpouse());
+        assertEquals("P3", sut.getMarriageDetails()[2]);
+        assertEquals("P1", spouse2.getSpouse());
+        assertEquals("P1", spouse2.getMarriageDetails()[1]);
+        assertEquals("P1", spouse.getSpouse()); // the old spouse is still technically married to P1, but this is on purpose
+                                                // so we can find all of a person's children across marriages
     }
 
     /**
@@ -189,6 +212,16 @@ public class PersonTest {
 
     @Test
     public void testGender1() {
+        // TODO
+    }
+
+    @Test
+    public void testGender2() {
+        // TODO
+    }
+
+    @Test
+    public void testGender3() {
         // TODO
     }
 
