@@ -17,7 +17,6 @@ public class PersonTest {
 
     private Person sut; // the main Person object we are creating and testing
     private Person spouse1; Person spouse2; // sut's spouse, if applicable for the test
-    private Person parent1; Person parent2;
     private Person child1; Person child2; Person child3; // sut's children, if applicable for the test
 
     @After
