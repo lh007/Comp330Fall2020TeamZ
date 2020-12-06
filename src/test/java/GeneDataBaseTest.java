@@ -82,33 +82,6 @@ public class GeneDataBaseTest {
 
     @Test
     public void testPlantedParents() {
-        // TODO
-        fail("not implemented");
-    }
-
-    @Test
-    public void testCreatePartnership1() {
-        // TODO
-        fail("not implemented");
-        sut.createPartnership(new String[]{" "," "," "," "," "," "," "," "});
-    }
-
-    @Test
-    public void testCreateParents1() {
-        // TODO
-        fail("not implemented");
-    }
-
-    /* TODO test methods for adding new relationships */
-
-    @Test
-    public void testCreateNewMarriage1() {
-        // TODO
-        fail("not implemented");
-    }
-
-    @Test
-    public void testGetMales1() {
         assertNotNull(sut); // assert sut was initialized
         // must plant tree manually; does not work with 'Before'
         try {
@@ -118,23 +91,76 @@ public class GeneDataBaseTest {
             e.printStackTrace();
         }
         assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
-        for (String ID : sut.getMales()) {
-            assertNotNull(sut.getMales());
-            assertEquals(true, sut.findPerson(ID).isMale());
+        Person person;
+        person = sut.findPerson("P1"); assertEquals("[P6, P7]", person.getParents().toString());
+        person = sut.findPerson("P2"); assertEquals("[P6, P7]", person.getParents().toString()); 
+        person = sut.findPerson("P3"); assertEquals("[P6, P7]", person.getParents().toString()); 
+        person = sut.findPerson("P7"); assertEquals("[P10]", person.getParents().toString());
+        person = sut.findPerson("P13"); assertEquals("[P8]", person.getParents().toString()); 
+        person = sut.findPerson("P9"); assertEquals("[P1]", person.getParents().toString()); 
+        person = sut.findPerson("P8"); assertEquals("[]", person.getParents().toString());
+        person = sut.findPerson("P15"); assertEquals("[]", person.getParents().toString()); 
+        person = sut.findPerson("P16"); assertEquals("[P18]", person.getParents().toString()); 
+        person = sut.findPerson("P17"); assertEquals("[P18]", person.getParents().toString()); 
+        person = sut.findPerson("P18"); assertEquals("[P10]", person.getParents().toString()); 
+        person = sut.findPerson("P23"); assertEquals("[P10]", person.getParents().toString()); 
+        person = sut.findPerson("P6"); assertEquals("[P20, P19]", person.getParents().toString()); 
+        person = sut.findPerson("P21"); assertEquals("[P20, P19]", person.getParents().toString()); 
+        person = sut.findPerson("P25"); assertEquals("[P1]", person.getParents().toString()); 
+        person = sut.findPerson("P9"); assertEquals("[P1]", person.getParents().toString()); 
+        person = sut.findPerson("P30"); assertEquals("[P17]", person.getParents().toString()); 
+        person = sut.findPerson("P31"); assertEquals("[P17]", person.getParents().toString()); 
+        person = sut.findPerson("P26"); assertEquals("[P9, P30]", person.getParents().toString()); 
+        person = sut.findPerson("P27"); assertEquals("[P9, P30]", person.getParents().toString());  
+    }
+
+    @Test
+    public void testPlantedChildren() {
+        // TODO
+        assertNotNull(sut); // assert sut was initialized
+        // must plant tree manually; does not work with 'Before'
+        try {
+            sut.plantTree();
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
+        Person person; 
     }
 
     @Test
-    public void testGetFemales1() {
+    public void testPlantedSiblings() {
         // TODO
-        fail("not implemented");
+        fail();
+        assertNotNull(sut); // assert sut was initialized
+        // must plant tree manually; does not work with 'Before'
+        try {
+            sut.plantTree();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
+        Person person; 
     }
 
     @Test
-    public void testGetAllPeople1() {
+    public void testPlantedGrandparents() {
         // TODO
-        fail("not implemented");
+        fail();
+        assertNotNull(sut); // assert sut was initialized
+        // must plant tree manually; does not work with 'Before'
+        try {
+            sut.plantTree();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
+        Person person; 
     }
+
 
     @Test
     public void testFindPerson1() {
@@ -161,31 +187,46 @@ public class GeneDataBaseTest {
     }
 
     @Test
-    public void testGetChildren1() {
-        // TODO
-        fail("not implemented");
-    }
-
-    @Test
-    public void testGetParents1() {
-        // TODO
-        fail("not implemented");
-    }
-
-    @Test
-    public void testGetGrandparents1() {
-        // TODO
-        fail("not implemented");
-    }
-
-    @Test
-    public void testGetSiblings1() {
-        // TODO
-        fail("not implemented");
-    }
-
-    @Test
     public void testEditEntry1() {
+        // TODO
+        fail("not implemented");
+    }
+
+    /* TODO test methods for adding new relationships */
+
+    @Test
+    public void testCreatePartnership1() {
+        // TODO
+        fail("not implemented");
+        sut.createPartnership(new String[]{" "," "," "," "," "," "," "," "});
+    }
+
+    @Test
+    public void testCreateNewMarriage1() {
+        // TODO
+        fail("not implemented");
+    }
+
+    @Test
+    public void testCreateChildren1() {
+        // TODO
+        fail("not implemented");
+    }
+
+    @Test
+    public void testCreateParents1() {
+        // TODO
+        fail("not implemented");
+    }
+
+    @Test
+    public void testCreateGrandparents1() {
+        // TODO
+        fail("not implemented");
+    }
+
+    @Test
+    public void testCreateSiblings1() {
         // TODO
         fail("not implemented");
     }
