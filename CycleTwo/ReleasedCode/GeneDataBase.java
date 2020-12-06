@@ -14,22 +14,22 @@ import static java.nio.file.Files.readAllBytes;
  */
 public class GeneDataBase {
 
-
-    public final HashMap<String, Person> geneMap = new HashMap<>();
-    private final String fileName = "FamilyTreeInputTextFileV2.txt";
+    public final HashMap<String, Person> geneMap;
+    private final String fileName;
     ArrayList<String> males = new ArrayList<String>();
     ArrayList<String> females = new ArrayList<String>();
     ArrayList<String> allPeople = new ArrayList<String>();
 
-    public GeneDataBase() {
-
+    public GeneDataBase(HashMap<String, Person> map, String file, ArrayList<String> m, 
+    ArrayList<String> f, ArrayList<String> p) {
+        geneMap = map; fileName = file; males = m; females = f; allPeople = p;
     }
 
     // read-in method for FamilyTreeInputTextFileV2.txt. splits the lines given
     // in the file into either a new instance of a Person, a partnership, or parents.
     // when the end of the file is reached, "file successfully read in" is printed to the
     // console.
-    void plantTree() throws Exception {
+    public void plantTree() throws Exception {
         String input;
         String[] inputArray;
         String[] splitLine;
@@ -57,12 +57,14 @@ public class GeneDataBase {
         } while (!done);
     }
 
-    // creates a new partnership. a String array is passed in and iterated through.
-    // for each element in the array, if it is not blank, either the geneMap retrieves
-    // names of the members of the partnership and adds them into a new partnership or
-    // sets marriage details depending on the index of the String array that is being
-    // read.
-    private void createPartnership(String[] data) {
+    /** 
+     * Creates a new partnership. a String array is passed in and iterated through.
+     * for each element in the array, if it is not blank, either the geneMap retrieves
+     * names of the members of the partnership and adds them into a new partnership or
+     * sets marriage details depending on the index of the String array that is being
+     * read.
+     */
+    public void createPartnership(String[] data) {
         for (int i = 0; i < data.length; i++) {
             String d = data[i];
             if (d.equals(" ")) { data[i] = "N/a"; }
@@ -87,7 +89,7 @@ public class GeneDataBase {
 
     // given a String array, parents are set for a particular child if applicable. Children are also set
     // for parents. 
-    private void createParents(String[] data) {
+    public void createParents(String[] data) {
         String marriage = data[0];
         Person child = geneMap.get(data[1]);
         for (Person ind : geneMap.values()) {
@@ -106,7 +108,7 @@ public class GeneDataBase {
     }
     //cycle 3 addition to construct new relationships
 
-    public void createNewMarriage(ArrayList<String> partners,String [] details){
+    public void createNewMarriage(ArrayList<String> partners, String [] details){
         Person mother = geneMap.get(partners.get(0));
         Person father = geneMap.get(partners.get(1));
         //neither married and no child
@@ -178,6 +180,9 @@ public class GeneDataBase {
         }
     }
 
+    public ArrayList<Person> getAllPersons(){
+        return (ArrayList<Person>) geneMap.values();
+    }
     // search method for finding any ID that has the exact first and last name
     public ArrayList<String> findExactNameID(String familyName, String givenName) {
         ArrayList<String> result = new ArrayList<String>();
@@ -219,7 +224,7 @@ public class GeneDataBase {
         return result;
     }
 
-    /* add get family member methods here (bio, no in laws) */
+    /* get family member methods (biological, no in laws) */
 
     // returns IDs of all children
     public ArrayList<String> getChildren(String id) {
