@@ -21,12 +21,13 @@ public class GenealogyApp {
         AddMarriageGUI am = new AddMarriageGUI();
         MainMenuGUI mm = new MainMenuGUI();
         EditGUI edit = new EditGUI();
+        SearchGUI search = new SearchGUI();
         int currentID = 32;
         int label = 10;
         Person lastAdded;
         boolean done = false;
         ArrayList<String> searchResult = new ArrayList<String>();
-        SearchGUI s = new SearchGUI();
+
 
 
         try {
@@ -70,24 +71,24 @@ public class GenealogyApp {
                     //search family tree
                     case 3:
                         //search gui and processing
-                        s.GUI(gdb.getAllPeople());
-                        while(s.personID==null){
+                        search.GUI(gdb.getAllPeople());
+                        while(search.personID==null){
                             out.println();
                         }
-                        if(s.searchType.equals("children")){
-                            searchResult = gdb.getChildren(s.personID);
+                        if(search.searchType.equals("children")){
+                            searchResult = gdb.getChildren(search.personID);
                         }
-                        if(s.searchType.equals("parents")){
-                            searchResult = gdb.getParents(s.personID);
+                        if(search.searchType.equals("parents")){
+                            searchResult = gdb.getParents(search.personID);
                         }
-                        if(s.searchType.equals("grandparents")){
-                            searchResult = gdb.getGrandparents(s.personID);
+                        if(search.searchType.equals("grandparents")){
+                            searchResult = gdb.getGrandparents(search.personID);
                         }
-                        if(s.searchType.equals("siblings")){
-                            searchResult = gdb.getSiblings(s.personID);
+                        if(search.searchType.equals("siblings")){
+                            searchResult = gdb.getSiblings(search.personID);
                         }
-                        s.searchDisplay(searchResult);
-                        s.resetSearch();
+                        search.searchDisplay(searchResult);
+                        search.resetSearch();
                         break;
                     //edit an entry
                     case 4:

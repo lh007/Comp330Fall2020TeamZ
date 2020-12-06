@@ -1,0 +1,25 @@
+TEAM Z GENEALOGY APP
+    K. Luck, K. Phillips, K. Taylor, K. Bui, H. Kureishy
+
+NOTES:
+    Some data may be output to the terminal instead of GUIs, please check terminal
+    after processing data to ensure no errors have been thrown.
+
+SUMMARY:
+    The genealogy app begins by reading a provided genealogy document, and
+    then creating a family tree based on this data. Once the family tree
+    has been created, it should provide a number of quality of life features
+    to help the user read and navigate the tree, such as the ability to search
+    for members of the tree or add new members. Goal is to create an app that
+    clearly and easily keeps track.
+
+SCOPE/DEMOGRAPHIC:
+    CycleThree.Requirements conscious, with approach of reading in file, searching tree, and
+    adding new family members or relationships. Additionally, GUIs will present all data to user
+    and collect new data from user.
+
+KNOWN BUGS:
+    1. If a new person is not filled out correctly, cannot exit back to edit and have to restart app
+    2. Program does not close completely when app is exited
+    
+    
