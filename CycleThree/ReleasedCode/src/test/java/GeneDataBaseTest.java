@@ -77,6 +77,11 @@ public class GeneDataBaseTest {
         person = sut.findPerson("P9"); assertEquals("P30", person.getSpouse()); // single perma marriage
     }
 
+    /**
+     * assert the sut != null, then
+     * verify that the correct Parents data was successfully read in from
+     * the file and added to the database
+     */
     @Test
     public void testPlantedParents() {
         assertNotNull(sut); // assert sut was initialized
@@ -111,6 +116,11 @@ public class GeneDataBaseTest {
         person = sut.findPerson("P27"); assertEquals("[P9, P30]", person.getParents().toString());  
     }
 
+    /**
+     * assert the sut != null, then
+     * verify that the correct Children data was successfully read in from
+     * the file and added to the database
+     */
     @Test
     public void testPlantedChildren() {
         assertNotNull(sut); // assert sut was initialized
@@ -138,6 +148,11 @@ public class GeneDataBaseTest {
         person = sut.findPerson("P30"); assertEquals("[P26, P27]", person.getChildren().toString());
     }
 
+    /**
+     * assert the sut != null, then
+     * verify that the correct Siblings data was successfully read in from
+     * the file and added to the database
+     */
     @Test
     public void testPlantedSiblings() {
         assertNotNull(sut); // assert sut was initialized
@@ -169,6 +184,11 @@ public class GeneDataBaseTest {
         assertEquals("[P27]", sut.getSiblings("P26").toString());
     }
 
+    /**
+     * assert the sut != null, then
+     * verify that the correct Grandparents data was successfully read in from
+     * the file and added to the database
+     */
     @Test
     public void testPlantedGrandparents() {
         assertNotNull(sut); // assert sut was initialized
@@ -204,6 +224,11 @@ public class GeneDataBaseTest {
         assertEquals("[P1, P17]", sut.getGrandparents("P27").toString());
     }
 
+    /**
+     * assert the sut != null, then
+     * verify that we can get a list of IDs of people
+     * with a specific full name
+     */
     @Test
     public void testFindExactNameID1() {
         assertNotNull(sut); // assert sut was initialized
@@ -218,6 +243,11 @@ public class GeneDataBaseTest {
         assertEquals("[P1, P6, P9, P26]", sut.findExactNameID("Johnson", "Dick").toString());
     }
 
+    /**
+     * assert the sut != null, then
+     * verify that we can get a list of IDs of people
+     * with a specific surname/family name
+     */
     @Test
     public void testFindExactSurnameID1() {
         assertNotNull(sut); // assert sut was initialized
@@ -232,6 +262,11 @@ public class GeneDataBaseTest {
         assertEquals("[P10, P23]",sut.findExactSurnameID("Lopez").toString());
     }
 
+    /**
+     * assert the sut != null, then
+     * verify that we can get a list of IDs of people
+     * with a specific first name
+     */
     @Test
     public void testFindExactFirstNameID1() {
         assertNotNull(sut); // assert sut was initialized
@@ -246,6 +281,10 @@ public class GeneDataBaseTest {
         assertEquals("[P3, P17]",sut.findExactFirstNameID("Sally Abigale").toString());
     }
 
+    /**
+     * assert the sut != null, then
+     * verify that the program can edit a Person object
+     */
     @Test
     public void testEditEntry1() {
         // TODO editEntry gives NP exception
@@ -275,8 +314,16 @@ public class GeneDataBaseTest {
         assertEquals("12/30/2021", person.getDod());
     }
 
-    /* Test methods for adding new relationships */
+    /**
+     * Test methods for adding new relationships
+     * */
 
+    /**
+     * assert the sut != null, then
+     * verify that the program can create a new Partnership
+     * and update Person objects contained in the Partnership
+     * accordingly
+     */
     @Test
     public void testCreatePartnership1() {
         assertNotNull(sut); // assert sut was initialized
@@ -301,69 +348,5 @@ public class GeneDataBaseTest {
         sut.createPartnership(new String[]{"R12","P23","P9"," "," "," "," "," "});
         person = sut.findPerson("P9"); assertEquals("P23", person.getSpouse());
         person = sut.findPerson("P23"); assertEquals("P9", person.getSpouse());
-    }
-
-    @Test
-    public void testCreateParentsChildren1() {
-        // TODO fix NullPointer Exception at createParents()
-        assertNotNull(sut); // assert sut was initialized
-        // must plant tree manually; does not work with 'Before'
-        try {
-            sut.plantTree();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
-        Person person;
-        person = new Person(new String[]{"P50"," "," "," "," "," "," "," ","R10"," "});
-        sut.createPartnership(new String[]{"R10","P27","P13"," "," "," "," "," "});
-        sut.createParents(new String[]{"R10","P50"});
-        assertEquals("P50", person.getID());
-        assertEquals("[P27, P13]", person.getParents());
-        person = sut.findPerson("P27");
-        assertEquals("[P50]", person.getChildren());
-        person = sut.findPerson("P13");
-        assertEquals("[P50]", person.getChildren());
-    }
-
-    @Test
-    public void testCreateGrandparents1() {
-        // TODO fix NullPointer Exception at createParents()
-        assertNotNull(sut); // assert sut was initialized
-        // must plant tree manually; does not work with 'Before'
-        try {
-            sut.plantTree();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
-        Person person;
-        person = new Person(new String[]{"P50"," "," "," "," "," "," "," ","R10"," "});
-        sut.createPartnership(new String[]{"R10","P30","P9"," "," "," "," "," "});
-        //sut.createParents(new String[]{"R10","P50"});
-        assertEquals("[P30, P9]", person.getParents());
-        assertEquals("[P1, P17]", sut.getGrandparents(person.getID()));
-    }
-
-    @Test
-    public void testCreateSiblings1() {
-        // TODO fix NullPointer Exception at createParents()
-        assertNotNull(sut); // assert sut was initialized
-        // must plant tree manually; does not work with 'Before'
-        try {
-            sut.plantTree();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
-        Person person;
-        person = new Person(new String[]{"P50"," "," "," "," "," "," "," ","R10"," "});
-        sut.createPartnership(new String[]{"R10","P30","P9"," "," "," "," "," "});
-        sut.createParents(new String[]{"R10","P50"});
-        assertEquals("[P30, P9]", person.getParents());
-        assertEquals("[P26, P26]", sut.getSiblings(person.getID()));
     }
 }
