@@ -21,13 +21,9 @@ public class OutputFile {
 
     private HashMap<String, Person> gm;
 
-
     public OutputFile(HashMap<String, Person> data){
         gm = data;
     }
-
-
-
 
     public void writeResults() throws IOException {
         File output = File.createTempFile("TreeResults", null);

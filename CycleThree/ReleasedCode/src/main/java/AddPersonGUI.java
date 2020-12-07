@@ -238,11 +238,12 @@ public class AddPersonGUI{
         f.add(b1);
         f.add(b2);
         f.add(b3);
-//Then we set the sixe of this frame (width,height)
+//Then we set the size of this frame (width,height)
         f.setSize(385, 590);
         f.setLayout(null);
         f.setVisible(true);
 
+        //prevents GUI from exiting until user is done inputing data and has exited display screen
         while(flag == false){
             System.out.print("");
         }

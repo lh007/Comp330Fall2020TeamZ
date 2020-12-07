@@ -166,21 +166,11 @@ public class Person {
 
     public void setDod(String dod) { this.dod = dod; }
 
-   // public void setAge(int age) { this.age = age; }
-
     public void setBirthPlace(String birthPlace) { this.birthPlace = birthPlace; }
 
     public void setDeathPlace(String deathPlace) { this.deathPlace = deathPlace; }
 
-   // public void setParentRelationshipID(String parentRelationshipID) { this.parentRelationshipID = parentRelationshipID; }
-
     public void setSpouse(String spouse) { this.spouse = spouse; }
-
-   // public void setMale(boolean male) { this.male = male; }
-
-   // public void setChildren(ArrayList<String> children) { this.children = children; }
-
-   // public void setParents(ArrayList<String> parents) { this.parents = parents; }
 
     public void setNewMarriageDetails(String [] details) {this.newMarriageDetails = details;}
 
@@ -213,6 +203,4 @@ public class Person {
     public String[] getMarriageDetails() { return marriageDetails; }
 
     public boolean isMale() { return male; }
-
-    public String [] getNewMarriageDetails(){ return newMarriageDetails; }
 }

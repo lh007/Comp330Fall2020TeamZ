@@ -26,7 +26,6 @@ public class GenealogyApp {
         boolean done = false;
         ArrayList<String> searchResult = new ArrayList<String>();
 
-
         try {
             gdb.plantTree();
 
@@ -64,6 +63,7 @@ public class GenealogyApp {
                         String[] details = am.nm;
                         gdb.createNewMarriage(am.married, details);
                         label++;
+                        am.resetMarriage();
                         break;
                     //search family tree
                     case 3:
