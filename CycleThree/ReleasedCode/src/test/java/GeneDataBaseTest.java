@@ -304,7 +304,51 @@ public class GeneDataBaseTest {
     }
 
     @Test
-    public void testCreateChildren1() {
+    public void testCreateParentsChildren1() {
+        // TODO fix NullPointer Exception at createParents()
+        assertNotNull(sut); // assert sut was initialized
+        // must plant tree manually; does not work with 'Before'
+        try {
+            sut.plantTree();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
+        Person person;
+        person = new Person(new String[]{"P50"," "," "," "," "," "," "," ","R10"," "});
+        sut.createPartnership(new String[]{"R10","P27","P13"," "," "," "," "," "});
+        //sut.createParents(new String[]{"R10","P50"});
+        assertEquals("P50", person.getID());
+        assertEquals("[P27, P13]", person.getParents());
+        person = sut.findPerson("P27");
+        assertEquals("[P50]", person.getChildren());
+        person = sut.findPerson("P13");
+        assertEquals("[P50]", person.getChildren());
+    }
+
+    @Test
+    public void testCreateGrandparents1() {
+        // TODO fix NullPointer Exception at createParents()
+        assertNotNull(sut); // assert sut was initialized
+        // must plant tree manually; does not work with 'Before'
+        try {
+            sut.plantTree();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
+        Person person;
+        person = new Person(new String[]{"P50"," "," "," "," "," "," "," ","R10"," "});
+        sut.createPartnership(new String[]{"R10","P30","P9"," "," "," "," "," "});
+        sut.createParents(new String[]{"R10","P50"});
+        assertEquals("[P30, P9]", person.getParents());
+        assertEquals("[P1, P17]", sut.getGrandparents(person.getID()));
+    }
+
+    @Test
+    public void testCreateSiblings1() {
         // TODO
         assertNotNull(sut); // assert sut was initialized
         // must plant tree manually; does not work with 'Before'
@@ -316,24 +360,5 @@ public class GeneDataBaseTest {
         }
         assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
         Person person;
-
-    }
-
-    @Test
-    public void testCreateParents1() {
-        // TODO
-        fail("not implemented");
-    }
-
-    @Test
-    public void testCreateGrandparents1() {
-        // TODO
-        fail("not implemented");
-    }
-
-    @Test
-    public void testCreateSiblings1() {
-        // TODO
-        fail("not implemented");
     }
 }

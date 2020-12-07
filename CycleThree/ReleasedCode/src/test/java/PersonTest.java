@@ -233,6 +233,4 @@ public class PersonTest {
         sut = new Person(new String[]{" "," "," "," "," "," "," "," "," "," "});
         assertFalse(sut.isMale());
     }
-
-
 }
