@@ -342,7 +342,7 @@ public class GeneDataBaseTest {
         Person person;
         person = new Person(new String[]{"P50"," "," "," "," "," "," "," ","R10"," "});
         sut.createPartnership(new String[]{"R10","P30","P9"," "," "," "," "," "});
-        sut.createParents(new String[]{"R10","P50"});
+        //sut.createParents(new String[]{"R10","P50"});
         assertEquals("[P30, P9]", person.getParents());
         assertEquals("[P1, P17]", sut.getGrandparents(person.getID()));
     }

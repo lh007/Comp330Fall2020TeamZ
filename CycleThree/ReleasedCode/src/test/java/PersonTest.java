@@ -118,7 +118,7 @@ public class PersonTest {
     }
 
     /**
-     * tests getID
+     * tests getID for a person with a defined ID
      */
     @Test
     public void testID1() {
@@ -127,7 +127,7 @@ public class PersonTest {
     }
 
     /**
-     * tests getID
+     * tests getID for a person without a defined ID
      */
     @Test
     public void testID2() {
@@ -156,8 +156,6 @@ public class PersonTest {
     public void testMarriageDetails1() {
         sut = new Person(new String[]{"P1"," "," "," "," "," "," "," "," "," "});
         spouse1 = new Person(new String[]{"P2"," "," "," "," "," "," "," "," "," "});
-        child1 = new Person (new String[]{"P3"," "," "," "," "," "," "," "," "," "});
-        child2 = new Person (new String[]{"P4"," "," "," "," "," "," "," "," "," "});
         sut.newPartnership(new String[]{"R1","P1","P2","01/01/2020","01/02/2020",
         "Las Vegas","Chicago"," "," "}, spouse1);
         assertEquals("P2", sut.getSpouse());
@@ -216,18 +214,27 @@ public class PersonTest {
         assertEquals("N/a", sut.getParentRelationshipID());
     }
 
+    /**
+     * tests boolean isMale, which returns true because the person is male
+     */
     @Test
     public void testGender1() {
         sut = new Person(new String[]{" "," "," "," "," "," "," "," "," ","M"});
         assertTrue(sut.isMale());
     }
 
+    /**
+     * tests boolean isMale, which returns false because the person is not male
+     */
     @Test
     public void testGender2() {
         sut = new Person(new String[]{" "," "," "," "," "," "," "," "," ","F"});
         assertFalse(sut.isMale());
     }
 
+    /**
+     * tests boolean isMale, which returns false because the person is not male
+     */
     @Test
     public void testGender3() {
         sut = new Person(new String[]{" "," "," "," "," "," "," "," "," "," "});
