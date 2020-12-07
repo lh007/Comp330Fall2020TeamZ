@@ -282,6 +282,7 @@ public class GeneDataBaseTest {
         // TODO
         fail("not implemented");
         sut.createPartnership(new String[]{" "," "," "," "," "," "," "," "});
+
     }
 
     @Test

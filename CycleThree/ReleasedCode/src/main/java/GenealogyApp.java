@@ -13,8 +13,6 @@ public class GenealogyApp {
         // creates new GeneDataBase, and tries to read in the file using plantTree(). If there is a problem,
         // an exception will be printed.
         GeneDataBase gdb = new GeneDataBase("FamilyTreeInputTextFileV2.txt");
-        //Scanner keyboard = new Scanner(in);
-        //GeneDataBase gdb = new GeneDataBase();
         HashMap<String, Person> map = gdb.exportData();
         OutputFile op = new OutputFile(map);
         AddPersonGUI ap = new AddPersonGUI();
