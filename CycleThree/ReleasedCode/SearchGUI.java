@@ -1,5 +1,9 @@
+<<<<<<< HEAD:CycleTwo/ReleasedCode/SearchGUI.java
 package CycleTwo.ReleasedCode;
 //package main.java; //for VSCode fix
+=======
+package CycleThree.ReleasedCode;
+>>>>>>> 92debd605a1938801236b55dedc65332cbfd594b:CycleThree/ReleasedCode/SearchGUI.java
 
 import java.awt.event.*;
 import javax.swing.*;
@@ -39,7 +43,7 @@ void GUI(ArrayList<String> people) {
             Object chosen = cb1.getSelectedItem();
             String [] splitChoice = chosen.toString().split(":");
             personID = splitChoice[0];
-            name = splitChoice[2];
+            name = splitChoice[1];
 
             searchType = cb2.getItemAt(cb2.getSelectedIndex());
             flag = true;
@@ -78,5 +82,11 @@ public void searchDisplay(ArrayList<String> results){
         }
     }
     JOptionPane.showMessageDialog(f, msg);
+}
+
+public void resetSearch(){
+    personID = null;
+    searchType = "";
+    name = "";
 }
 }  

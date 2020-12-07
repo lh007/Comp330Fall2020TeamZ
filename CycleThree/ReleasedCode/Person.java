@@ -1,4 +1,4 @@
-package CycleTwo.ReleasedCode;
+package CycleThree.ReleasedCode;
 //package main.java; //for VSCode fix
 import java.time.LocalDate;
 import java.time.Period;
@@ -132,12 +132,6 @@ public class Person {
     // prints out the full name and ID for a Person in the database.
     public String rawData(){
         List<String> newMarDets = null;
-        if(newMarriageDetails.equals(null)){
-            newMarDets.set(0, "N/a");
-        }
-        else{
-            newMarDets = Arrays.asList(newMarriageDetails);
-        }
         String out = this.toString() + "--";
         out += "ID: " + ID;
         out += ", DOB: " + dob;
@@ -147,7 +141,10 @@ public class Person {
         out+= ", Death place: " + deathPlace;
         out += ", Spouse: " + spouse;
         out+= ", Children: " + children.toString();
-        out+= ", Other marriage: " + newMarDets.toString();
+        if(newMarriageDetails!=null) {
+            newMarDets = Arrays.asList(newMarriageDetails);
+            out += ", Other marriage: " + newMarDets.toString();
+        }
         return out;
     }
 
