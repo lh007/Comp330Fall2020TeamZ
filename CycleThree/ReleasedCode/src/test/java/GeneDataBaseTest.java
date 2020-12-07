@@ -258,20 +258,21 @@ public class GeneDataBaseTest {
             e.printStackTrace();
         }
         assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
-        sut.editEntry(sut.findPerson("P1"), 0, "Marcus"); // "Dick" to "Marcus"
-        sut.editEntry(sut.findPerson("P2"), 1, "Young"); // "Johnson" to "Young"
-        sut.editEntry(sut.findPerson("P6"), 2, "Sr"); // blank to "Sr"
-        sut.editEntry(sut.findPerson("P18"), 3, "Tel Aviv"); // blank to "Tel Aviv"
-        sut.editEntry(sut.findPerson("P15"), 4, "10/09/2020"); // "09/09/1888" to "10/09/2020"
-        sut.editEntry(sut.findPerson("P30"), 5, "New York"); // blank to "New York"
-        sut.editEntry(sut.findPerson("P1"), 6, "12/30/2021"); // "12/30/2020" to "12/30/2021"
-        assertEquals("Marcus", sut.findPerson("P1").getGivenName());
-        assertEquals("Young", sut.findPerson("P2").getFamilyName());
-        assertEquals("Sr", sut.findPerson("P6").getSuffix());
-        assertEquals("Tel Aviv", sut.findPerson("P18").getBirthPlace());
-        assertEquals("10/09/2020", sut.findPerson("P15").getDob());
-        assertEquals("New York", sut.findPerson("P30").getDeathPlace());
-        assertEquals("12/30/2021", sut.findPerson("P1").getDod());
+        Person person;
+        person = sut.findPerson("P1"); sut.editEntry(person, 0, "Marcus"); // "Dick" to "Marcus"
+        assertEquals("Marcus", person.getGivenName());
+        person = sut.findPerson("P2"); sut.editEntry(person, 1, "Young"); // "Johnson" to "Young"
+        assertEquals("Young", person.getFamilyName());
+        person = sut.findPerson("P6"); sut.editEntry(person, 2, "Sr"); // blank to "Sr"
+        assertEquals("Sr", person.getSuffix());
+        person = sut.findPerson("P18"); sut.editEntry(person, 3, "Tel Aviv"); // blank to "Tel Aviv"
+        assertEquals("Tel Aviv", person.getBirthPlace());
+        person = sut.findPerson("P15"); sut.editEntry(person, 4, "10/09/2020"); // "09/09/1888" to "10/09/2020"
+        assertEquals("10/09/2020", person.getDob());
+        person = sut.findPerson("P30"); sut.editEntry(person, 5, "New York"); // blank to "New York"
+        assertEquals("New York", person.getDeathPlace());
+        person = sut.findPerson("P1"); sut.editEntry(person, 6, "12/30/2021"); // "12/30/2020" to "12/30/2021"
+        assertEquals("12/30/2021", person.getDod());
     }
 
     /* TODO test methods for adding new relationships */
@@ -305,7 +306,17 @@ public class GeneDataBaseTest {
     @Test
     public void testCreateChildren1() {
         // TODO
-        fail("not implemented");
+        assertNotNull(sut); // assert sut was initialized
+        // must plant tree manually; does not work with 'Before'
+        try {
+            sut.plantTree();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
+        Person person;
+
     }
 
     @Test
