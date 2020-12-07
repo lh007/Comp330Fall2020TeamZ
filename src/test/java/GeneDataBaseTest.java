@@ -116,7 +116,6 @@ public class GeneDataBaseTest {
 
     @Test
     public void testPlantedChildren() {
-        // TODO
         assertNotNull(sut); // assert sut was initialized
         // must plant tree manually; does not work with 'Before'
         try {
@@ -126,13 +125,24 @@ public class GeneDataBaseTest {
             e.printStackTrace();
         }
         assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
-        Person person; 
+        Person person;
+        person = sut.findPerson("P1"); assertEquals("[P9, P25]", person.getChildren().toString());
+        person = sut.findPerson("P8"); assertEquals("[P13]", person.getChildren().toString());
+        person = sut.findPerson("P19"); assertEquals("[P6, P21]", person.getChildren().toString());
+        person = sut.findPerson("P20"); assertEquals("[P6, P21]", person.getChildren().toString());
+        person = sut.findPerson("P6"); assertEquals("[P1, P2, P3]", person.getChildren().toString());
+        person = sut.findPerson("P7"); assertEquals("[P1, P2, P3]", person.getChildren().toString());
+        person = sut.findPerson("P10"); assertEquals("[P7, P18, P23]", person.getChildren().toString());
+        person = sut.findPerson("P18"); assertEquals("[P16, P17]", person.getChildren().toString());
+        person = sut.findPerson("P19"); assertEquals("[P6, P21]", person.getChildren().toString());
+        person = sut.findPerson("P20"); assertEquals("[P6, P21]", person.getChildren().toString());
+        person = sut.findPerson("P17"); assertEquals("[P30, P31]", person.getChildren().toString());
+        person = sut.findPerson("P9"); assertEquals("[P26, P27]", person.getChildren().toString());
+        person = sut.findPerson("P30"); assertEquals("[P26, P27]", person.getChildren().toString());
     }
 
     @Test
     public void testPlantedSiblings() {
-        // TODO
-        fail();
         assertNotNull(sut); // assert sut was initialized
         // must plant tree manually; does not work with 'Before'
         try {
@@ -142,13 +152,28 @@ public class GeneDataBaseTest {
             e.printStackTrace();
         }
         assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
-        Person person; 
+        assertEquals("[P2, P3]", sut.getSiblings("P1").toString());
+        assertEquals("[P1, P3]", sut.getSiblings("P2").toString());
+        assertEquals("[P1, P2]", sut.getSiblings("P3").toString());
+        assertEquals("[]", sut.getSiblings("P15").toString()); // will be blank
+        assertEquals("[]", sut.getSiblings("P8").toString()); // will be blank
+        assertEquals("[P6]", sut.getSiblings("P21").toString());
+        assertEquals("[P21]", sut.getSiblings("P6").toString());
+        assertEquals("[P18, P23]", sut.getSiblings("P7").toString());
+        assertEquals("[P7, P23]", sut.getSiblings("P18").toString());
+        assertEquals("[P7, P18]", sut.getSiblings("P23").toString());
+        assertEquals("[P16]", sut.getSiblings("P17").toString());
+        assertEquals("[P17]", sut.getSiblings("P16").toString());
+        assertEquals("[P9]", sut.getSiblings("P25").toString());
+        assertEquals("[P25]", sut.getSiblings("P9").toString());
+        assertEquals("[P31]", sut.getSiblings("P30").toString());
+        assertEquals("[P30]", sut.getSiblings("P31").toString());
+        assertEquals("[P26]", sut.getSiblings("P27").toString());
+        assertEquals("[P27]", sut.getSiblings("P26").toString());
     }
 
     @Test
     public void testPlantedGrandparents() {
-        // TODO
-        fail();
         assertNotNull(sut); // assert sut was initialized
         // must plant tree manually; does not work with 'Before'
         try {
@@ -158,38 +183,99 @@ public class GeneDataBaseTest {
             e.printStackTrace();
         }
         assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
-        Person person; 
-    }
-
-
-    @Test
-    public void testFindPerson1() {
-        // TODO
-        fail("not implemented");
+        assertEquals("[P20, P19, P10]", sut.getGrandparents("P1").toString()); 
+        assertEquals("[P20, P19, P10]", sut.getGrandparents("P2").toString());
+        assertEquals("[P20, P19, P10]", sut.getGrandparents("P3").toString());
+        assertEquals("[]", sut.getGrandparents("P6").toString());
+        assertEquals("[]", sut.getGrandparents("P7").toString());
+        assertEquals("[]", sut.getGrandparents("P8").toString());
+        assertEquals("[]", sut.getGrandparents("P10").toString());
+        assertEquals("[]", sut.getGrandparents("P13").toString());
+        assertEquals("[P6, P7]", sut.getGrandparents("P9").toString());
+        assertEquals("[]", sut.getGrandparents("P15").toString());
+        assertEquals("[P10]", sut.getGrandparents("P16").toString());
+        assertEquals("[P10]", sut.getGrandparents("P17").toString());
+        assertEquals("[]", sut.getGrandparents("P18").toString());
+        assertEquals("[]", sut.getGrandparents("P19").toString());
+        assertEquals("[]", sut.getGrandparents("P20").toString());
+        assertEquals("[]", sut.getGrandparents("P21").toString());
+        assertEquals("[]", sut.getGrandparents("P23").toString());
+        assertEquals("[P6, P7]", sut.getGrandparents("P25").toString());
+        assertEquals("[P18]", sut.getGrandparents("P30").toString());
+        assertEquals("[P18]", sut.getGrandparents("P31").toString());
+        assertEquals("[P1, P17]", sut.getGrandparents("P26").toString());
+        assertEquals("[P1, P17]", sut.getGrandparents("P27").toString());
     }
 
     @Test
     public void testFindExactNameID1() {
-        // TODO
-        fail("not implemented");
+        assertNotNull(sut); // assert sut was initialized
+        // must plant tree manually; does not work with 'Before'
+        try {
+            sut.plantTree();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
+        assertEquals("[P1, P6, P9, P26]", sut.findExactNameID("Johnson", "Dick").toString());
     }
 
     @Test
     public void testFindExactSurnameID1() {
-        // TODO
-        fail("not implemented");
+        assertNotNull(sut); // assert sut was initialized
+        // must plant tree manually; does not work with 'Before'
+        try {
+            sut.plantTree();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
+        assertEquals("[P10, P23]",sut.findExactSurnameID("Lopez").toString());
     }
 
     @Test
     public void testFindExactFirstNameID1() {
-        // TODO
-        fail("not implemented");
+        assertNotNull(sut); // assert sut was initialized
+        // must plant tree manually; does not work with 'Before'
+        try {
+            sut.plantTree();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
+        assertEquals("[P3, P17]",sut.findExactFirstNameID("Sally Abigale").toString());
     }
 
     @Test
     public void testEditEntry1() {
-        // TODO
-        fail("not implemented");
+        // TODO editEntry gives NP exception
+        assertNotNull(sut); // assert sut was initialized
+        // must plant tree manually; does not work with 'Before'
+        try {
+            sut.plantTree();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
+        sut.editEntry(sut.findPerson("P1"), 0, "Marcus"); // "Dick" to "Marcus"
+        sut.editEntry(sut.findPerson("P2"), 1, "Young"); // "Johnson" to "Young"
+        sut.editEntry(sut.findPerson("P6"), 2, "Sr"); // blank to "Sr"
+        sut.editEntry(sut.findPerson("P18"), 3, "Tel Aviv"); // blank to "Tel Aviv"
+        sut.editEntry(sut.findPerson("P15"), 4, "10/09/2020"); // "09/09/1888" to "10/09/2020"
+        sut.editEntry(sut.findPerson("P30"), 5, "New York"); // blank to "New York"
+        sut.editEntry(sut.findPerson("P1"), 6, "12/30/2021"); // "12/30/2020" to "12/30/2021"
+        assertEquals("Marcus", sut.findPerson("P1").getGivenName());
+        assertEquals("Young", sut.findPerson("P2").getFamilyName());
+        assertEquals("Sr", sut.findPerson("P6").getSuffix());
+        assertEquals("Tel Aviv", sut.findPerson("P18").getBirthPlace());
+        assertEquals("10/09/2020", sut.findPerson("P15").getDob());
+        assertEquals("New York", sut.findPerson("P30").getDeathPlace());
+        assertEquals("12/30/2021", sut.findPerson("P1").getDod());
+
     }
 
     /* TODO test methods for adding new relationships */
@@ -199,12 +285,6 @@ public class GeneDataBaseTest {
         // TODO
         fail("not implemented");
         sut.createPartnership(new String[]{" "," "," "," "," "," "," "," "});
-    }
-
-    @Test
-    public void testCreateNewMarriage1() {
-        // TODO
-        fail("not implemented");
     }
 
     @Test
