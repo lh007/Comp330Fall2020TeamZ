@@ -272,17 +272,34 @@ public class GeneDataBaseTest {
         assertEquals("10/09/2020", sut.findPerson("P15").getDob());
         assertEquals("New York", sut.findPerson("P30").getDeathPlace());
         assertEquals("12/30/2021", sut.findPerson("P1").getDod());
-
     }
 
     /* TODO test methods for adding new relationships */
 
     @Test
     public void testCreatePartnership1() {
-        // TODO
-        fail("not implemented");
-        sut.createPartnership(new String[]{" "," "," "," "," "," "," "," "});
+        assertNotNull(sut); // assert sut was initialized
+        // must plant tree manually; does not work with 'Before'
+        try {
+            sut.plantTree();
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
+        Person person;
+        // neither married before
+        sut.createPartnership(new String[]{"R10","P27","P13"," "," "," "," "," "});
+        person = sut.findPerson("P27"); assertEquals("P13", person.getSpouse());
+        person = sut.findPerson("P13"); assertEquals("P27", person.getSpouse());
+        // one married before
+        sut.createPartnership(new String[]{"R11","P31","P25"," "," "," "," "," "});
+        person = sut.findPerson("P31"); assertEquals("P25", person.getSpouse());
+        person = sut.findPerson("P25"); assertEquals("P31", person.getSpouse());
+        // both married before
+        sut.createPartnership(new String[]{"R12","P23","P9"," "," "," "," "," "});
+        person = sut.findPerson("P9"); assertEquals("P23", person.getSpouse());
+        person = sut.findPerson("P23"); assertEquals("P9", person.getSpouse());
     }
 
     @Test
