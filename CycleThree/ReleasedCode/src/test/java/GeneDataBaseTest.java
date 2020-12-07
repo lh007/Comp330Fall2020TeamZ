@@ -20,7 +20,7 @@ import CycleThree.ReleasedCode.src.main.java.Person;
  */
 public class GeneDataBaseTest {
 
-    private String file = "/Users/kendall/Desktop/comp330/Comp330Fall2020TeamZ/FamilyTreeInputTextFileV2.txt";
+    private String file = "FamilyTreeInputTextFileV2.txt";
     private GeneDataBase sut = new GeneDataBase(file);
 
     @After
