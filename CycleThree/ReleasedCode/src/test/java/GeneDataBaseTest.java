@@ -1,12 +1,17 @@
-package CycleThree.ReleasedCode;
+package CycleThree.ReleasedCode.src.test.java;
 //package test.java; //for VSCode fix
+
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.After;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import CycleThree.ReleasedCode.src.main.java.GeneDataBase;
+import CycleThree.ReleasedCode.src.main.java.Person;
 
 /**
  * Test methods in GeneDataBaseTest test the functionality of the GeneDataBase
@@ -15,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  */
 public class GeneDataBaseTest {
 
-    private String file = "FamilyTreeInputTextFileV2.txt";
+    private String file = "/Users/kendall/Desktop/comp330/Comp330Fall2020TeamZ/FamilyTreeInputTextFileV2.txt";
     private GeneDataBase sut = new GeneDataBase(file);
 
     @After
@@ -253,53 +258,112 @@ public class GeneDataBaseTest {
             e.printStackTrace();
         }
         assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
-        sut.editEntry(sut.findPerson("P1"), 0, "Marcus"); // "Dick" to "Marcus"
-        sut.editEntry(sut.findPerson("P2"), 1, "Young"); // "Johnson" to "Young"
-        sut.editEntry(sut.findPerson("P6"), 2, "Sr"); // blank to "Sr"
-        sut.editEntry(sut.findPerson("P18"), 3, "Tel Aviv"); // blank to "Tel Aviv"
-        sut.editEntry(sut.findPerson("P15"), 4, "10/09/2020"); // "09/09/1888" to "10/09/2020"
-        sut.editEntry(sut.findPerson("P30"), 5, "New York"); // blank to "New York"
-        sut.editEntry(sut.findPerson("P1"), 6, "12/30/2021"); // "12/30/2020" to "12/30/2021"
-        assertEquals("Marcus", sut.findPerson("P1").getGivenName());
-        assertEquals("Young", sut.findPerson("P2").getFamilyName());
-        assertEquals("Sr", sut.findPerson("P6").getSuffix());
-        assertEquals("Tel Aviv", sut.findPerson("P18").getBirthPlace());
-        assertEquals("10/09/2020", sut.findPerson("P15").getDob());
-        assertEquals("New York", sut.findPerson("P30").getDeathPlace());
-        assertEquals("12/30/2021", sut.findPerson("P1").getDod());
-
+        Person person;
+        person = sut.findPerson("P1"); sut.editEntry(person, 0, "Marcus"); // "Dick" to "Marcus"
+        assertEquals("Marcus", person.getGivenName());
+        person = sut.findPerson("P2"); sut.editEntry(person, 1, "Young"); // "Johnson" to "Young"
+        assertEquals("Young", person.getFamilyName());
+        person = sut.findPerson("P6"); sut.editEntry(person, 2, "Sr"); // blank to "Sr"
+        assertEquals("Sr", person.getSuffix());
+        person = sut.findPerson("P18"); sut.editEntry(person, 3, "Tel Aviv"); // blank to "Tel Aviv"
+        assertEquals("Tel Aviv", person.getBirthPlace());
+        person = sut.findPerson("P15"); sut.editEntry(person, 4, "10/09/2020"); // "09/09/1888" to "10/09/2020"
+        assertEquals("10/09/2020", person.getDob());
+        person = sut.findPerson("P30"); sut.editEntry(person, 5, "New York"); // blank to "New York"
+        assertEquals("New York", person.getDeathPlace());
+        person = sut.findPerson("P1"); sut.editEntry(person, 6, "12/30/2021"); // "12/30/2020" to "12/30/2021"
+        assertEquals("12/30/2021", person.getDod());
     }
 
     /* TODO test methods for adding new relationships */
 
     @Test
     public void testCreatePartnership1() {
-        // TODO
-        fail("not implemented");
-        sut.createPartnership(new String[]{" "," "," "," "," "," "," "," "});
+        assertNotNull(sut); // assert sut was initialized
+        // must plant tree manually; does not work with 'Before'
+        try {
+            sut.plantTree();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
+        Person person;
+        // neither married before
+        sut.createPartnership(new String[]{"R10","P27","P13"," "," "," "," "," "});
+        person = sut.findPerson("P27"); assertEquals("P13", person.getSpouse());
+        person = sut.findPerson("P13"); assertEquals("P27", person.getSpouse());
+        // one married before
+        sut.createPartnership(new String[]{"R11","P31","P25"," "," "," "," "," "});
+        person = sut.findPerson("P31"); assertEquals("P25", person.getSpouse());
+        person = sut.findPerson("P25"); assertEquals("P31", person.getSpouse());
+        // both married before
+        sut.createPartnership(new String[]{"R12","P23","P9"," "," "," "," "," "});
+        person = sut.findPerson("P9"); assertEquals("P23", person.getSpouse());
+        person = sut.findPerson("P23"); assertEquals("P9", person.getSpouse());
     }
 
     @Test
-    public void testCreateChildren1() {
-        // TODO
-        fail("not implemented");
-    }
+    public void testCreateParentsChildren1() {
+        // TODO fix NullPointer Exception at createParents()
+        assertNotNull(sut); // assert sut was initialized
+        // must plant tree manually; does not work with 'Before'
+        try {
+            sut.plantTree();
 
-    @Test
-    public void testCreateParents1() {
-        // TODO
-        fail("not implemented");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
+        Person person;
+        person = new Person(new String[]{"P50"," "," "," "," "," "," "," ","R10"," "});
+        sut.createPartnership(new String[]{"R10","P27","P13"," "," "," "," "," "});
+        //sut.createParents(new String[]{"R10","P50"});
+        assertEquals("P50", person.getID());
+        assertEquals("[P27, P13]", person.getParents());
+        person = sut.findPerson("P27");
+        assertEquals("[P50]", person.getChildren());
+        person = sut.findPerson("P13");
+        assertEquals("[P50]", person.getChildren());
     }
 
     @Test
     public void testCreateGrandparents1() {
-        // TODO
-        fail("not implemented");
+        // TODO fix NullPointer Exception at createParents()
+        assertNotNull(sut); // assert sut was initialized
+        // must plant tree manually; does not work with 'Before'
+        try {
+            sut.plantTree();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
+        Person person;
+        person = new Person(new String[]{"P50"," "," "," "," "," "," "," ","R10"," "});
+        sut.createPartnership(new String[]{"R10","P30","P9"," "," "," "," "," "});
+        sut.createParents(new String[]{"R10","P50"});
+        assertEquals("[P30, P9]", person.getParents());
+        assertEquals("[P1, P17]", sut.getGrandparents(person.getID()));
     }
 
     @Test
     public void testCreateSiblings1() {
-        // TODO
-        fail("not implemented");
+        // TODO fix NullPointer Exception at createParents()
+        assertNotNull(sut); // assert sut was initialized
+        // must plant tree manually; does not work with 'Before'
+        try {
+            sut.plantTree();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
+        Person person;
+        person = new Person(new String[]{"P50"," "," "," "," "," "," "," ","R10"," "});
+        sut.createPartnership(new String[]{"R10","P30","P9"," "," "," "," "," "});
+        sut.createParents(new String[]{"R10","P50"});
+        assertEquals("[P30, P9]", person.getParents());
+        assertEquals("[P26, P26]", sut.getSiblings(person.getID()));
     }
 }
