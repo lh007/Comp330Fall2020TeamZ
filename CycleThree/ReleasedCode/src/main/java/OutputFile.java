@@ -21,7 +21,6 @@ public class OutputFile {
 
     private HashMap<String, Person> gm;
 
-
     public OutputFile(HashMap<String, Person> data){
         gm = data;
     }

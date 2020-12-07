@@ -8,9 +8,7 @@ public class MainMenuGUI {
     public int currentSelection;
     public boolean selected = false;
 
-    public MainMenuGUI(){
-
-    }
+    public MainMenuGUI(){ }
 
     public void GUI(){
 
@@ -91,11 +89,9 @@ public class MainMenuGUI {
         f.setLayout(null);
         f.setVisible(true);
 
-
         do{
             System.out.println("");
         }while(selected == false);
-
     }
 
     public void resetSelection(){
