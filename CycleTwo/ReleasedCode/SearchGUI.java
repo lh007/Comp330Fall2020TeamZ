@@ -1,5 +1,5 @@
-//package CycleTwo.ReleasedCode;
-package main.java; //for VSCode fix
+package CycleTwo.ReleasedCode;
+//package main.java; //for VSCode fix
 
 import java.awt.event.*;
 import javax.swing.*;

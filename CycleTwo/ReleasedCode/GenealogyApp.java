@@ -1,5 +1,5 @@
-//package CycleTwo.ReleasedCode;
-package main.java; //for VSCode fix
+package CycleTwo.ReleasedCode;
+//package main.java; //for VSCode fix
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;

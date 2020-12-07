@@ -1,5 +1,5 @@
-//package CycleTwo.ReleasedCode;
-package main.java; //for VSCode fix
+package CycleTwo.ReleasedCode;
+//package main.java; //for VSCode fix
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;

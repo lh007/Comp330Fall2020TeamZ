@@ -1,5 +1,5 @@
-//package CycleTwo.ReleasedCode;
-package main.java; //for VSCode fix
+package CycleTwo.ReleasedCode;
+//package main.java; //for VSCode fix
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
