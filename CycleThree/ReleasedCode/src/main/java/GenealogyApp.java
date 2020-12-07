@@ -116,7 +116,7 @@ public class GenealogyApp {
             e.printStackTrace();
         }
         finally{
-            out.println("Save TreeResults.tmp file if you would like, the program will time after 1 minute");
+            out.println("Save TreeResults.tmp file if you would like, the program will time out after 1 minute");
             exitAppNow();
         }
     }
