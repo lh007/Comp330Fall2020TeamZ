@@ -275,7 +275,7 @@ public class GeneDataBaseTest {
         assertEquals("12/30/2021", person.getDod());
     }
 
-    /* TODO test methods for adding new relationships */
+    /* Test methods for adding new relationships */
 
     @Test
     public void testCreatePartnership1() {
@@ -318,7 +318,7 @@ public class GeneDataBaseTest {
         Person person;
         person = new Person(new String[]{"P50"," "," "," "," "," "," "," ","R10"," "});
         sut.createPartnership(new String[]{"R10","P27","P13"," "," "," "," "," "});
-        //sut.createParents(new String[]{"R10","P50"});
+        sut.createParents(new String[]{"R10","P50"});
         assertEquals("P50", person.getID());
         assertEquals("[P27, P13]", person.getParents());
         person = sut.findPerson("P27");
