@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class MainMenuGUI {
     public int currentSelection;
-    boolean selected = false;
+    public boolean selected = false;
 
     public MainMenuGUI(){
 

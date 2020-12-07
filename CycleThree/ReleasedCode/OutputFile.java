@@ -26,9 +26,6 @@ public class OutputFile {
         gm = data;
     }
 
-
-
-
     public void writeResults() throws IOException {
         File output = File.createTempFile("TreeResults", null);
         FileWriter fw = new FileWriter("TreeResults.tmp");

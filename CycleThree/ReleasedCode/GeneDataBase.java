@@ -16,9 +16,9 @@ public class GeneDataBase {
 
     public final HashMap<String, Person> geneMap;
     private final String fileName;
-    ArrayList<String> males;
-    ArrayList<String> females;
-    ArrayList<String> allPeople;
+    private ArrayList<String> males;
+    private ArrayList<String> females;
+    private ArrayList<String> allPeople;
 
     public GeneDataBase(String file) {
         geneMap = new HashMap<>();

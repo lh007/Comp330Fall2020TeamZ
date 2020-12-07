@@ -2,7 +2,6 @@ package CycleThree.ReleasedCode;
 //package main.java; //for VSCode fix
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Date;
@@ -14,8 +13,6 @@ public class GenealogyApp {
         // creates new GeneDataBase, and tries to read in the file using plantTree(). If there is a problem,
         // an exception will be printed.
         GeneDataBase gdb = new GeneDataBase("FamilyTreeInputTextFileV2.txt");
-        //Scanner keyboard = new Scanner(in);
-        //GeneDataBase gdb = new GeneDataBase();
         HashMap<String, Person> map = gdb.exportData();
         OutputFile op = new OutputFile(map);
         AddPersonGUI ap = new AddPersonGUI();
@@ -28,7 +25,6 @@ public class GenealogyApp {
         Person lastAdded;
         boolean done = false;
         ArrayList<String> searchResult = new ArrayList<String>();
-
 
         try {
             gdb.plantTree();
@@ -67,6 +63,7 @@ public class GenealogyApp {
                         String[] details = am.nm;
                         gdb.createNewMarriage(am.married, details);
                         label++;
+                        am.resetMarriage();
                         break;
                     //search family tree
                     case 3:

@@ -5,9 +5,9 @@ import javax.swing.*;
 import java.util.*;
 
 public class AddMarriageGUI {
-    boolean flag = false;
-    String [] nm = new String[6];
-    ArrayList<String> married = new ArrayList<>();
+    private boolean flag = false;
+    public String [] nm = new String[6];
+    public ArrayList<String> married = new ArrayList<>();
     public AddMarriageGUI() {}
     public void GUI(ArrayList<String> women, ArrayList<String> men, int label){
 
@@ -117,5 +117,10 @@ public class AddMarriageGUI {
         while(flag == false){
             System.out.print("");
         }
+    }
+
+    public void resetMarriage(){
+        married = null;
+        nm = null;
     }
 }

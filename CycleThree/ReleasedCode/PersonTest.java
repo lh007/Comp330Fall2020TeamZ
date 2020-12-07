@@ -1,13 +1,11 @@
 package CycleThree.ReleasedCode;
 //package test.java; //for VSCode fix
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.After;
 import org.junit.jupiter.api.Test;
-import main.java.Person;
+
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Test methods in PersonTest test the functionality of 

@@ -1,20 +1,12 @@
 package CycleThree.ReleasedCode;
 //package test.java; //for VSCode fix
 
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import org.junit.After;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.jupiter.api.Test;
-import main.java.GeneDataBase;
-import main.java.Person;
 
 /**
  * Test methods in GeneDataBaseTest test the functionality of the GeneDataBase
@@ -23,7 +15,7 @@ import main.java.Person;
  */
 public class GeneDataBaseTest {
 
-    private String file = "/Users/kendall/Desktop/comp330/Comp330Fall2020TeamZ/FamilyTreeInputTextFileV2.txt";
+    private String file = "FamilyTreeInputTextFileV2.txt";
     private GeneDataBase sut = new GeneDataBase(file);
 
     @After
