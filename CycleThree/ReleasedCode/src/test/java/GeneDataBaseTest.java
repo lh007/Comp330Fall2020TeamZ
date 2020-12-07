@@ -349,7 +349,7 @@ public class GeneDataBaseTest {
 
     @Test
     public void testCreateSiblings1() {
-        // TODO
+        // TODO fix NullPointer Exception at createParents()
         assertNotNull(sut); // assert sut was initialized
         // must plant tree manually; does not work with 'Before'
         try {
@@ -360,5 +360,10 @@ public class GeneDataBaseTest {
         }
         assertTrue(!sut.exportData().isEmpty()); // assert that data has been entered into sut
         Person person;
+        person = new Person(new String[]{"P50"," "," "," "," "," "," "," ","R10"," "});
+        sut.createPartnership(new String[]{"R10","P30","P9"," "," "," "," "," "});
+        sut.createParents(new String[]{"R10","P50"});
+        assertEquals("[P30, P9]", person.getParents());
+        assertEquals("[P26, P26]", sut.getSiblings(person.getID()));
     }
 }
