@@ -1,8 +1,7 @@
-package CycleThree.ReleasedCode;
+package CycleThree.ReleasedCode.src.main.java;
 //package main.java; //for VSCode fix
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Date;

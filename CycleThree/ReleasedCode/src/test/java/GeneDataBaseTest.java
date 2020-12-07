@@ -1,4 +1,4 @@
-package CycleThree.ReleasedCode;
+package CycleThree.ReleasedCode.src.test.java;
 //package test.java; //for VSCode fix
 
 import static org.junit.Assert.assertNull;
@@ -7,14 +7,11 @@ import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
-import main.java.GeneDataBase;
-import main.java.Person;
+
+import CycleThree.ReleasedCode.src.main.java.GeneDataBase;
+import CycleThree.ReleasedCode.src.main.java.Person;
 
 /**
  * Test methods in GeneDataBaseTest test the functionality of the GeneDataBase

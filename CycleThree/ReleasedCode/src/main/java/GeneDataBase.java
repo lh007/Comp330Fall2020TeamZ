@@ -1,4 +1,4 @@
-package CycleThree.ReleasedCode;
+package CycleThree.ReleasedCode.src.main.java;
 //package main.java; //for VSCode fix
 import java.nio.file.Paths;
 import java.util.ArrayList;

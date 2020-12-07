@@ -1,9 +1,5 @@
-<<<<<<< HEAD:CycleTwo/ReleasedCode/SearchGUI.java
-package CycleTwo.ReleasedCode;
+package CycleThree.ReleasedCode.src.main.java;
 //package main.java; //for VSCode fix
-=======
-package CycleThree.ReleasedCode;
->>>>>>> 92debd605a1938801236b55dedc65332cbfd594b:CycleThree/ReleasedCode/SearchGUI.java
 
 import java.awt.event.*;
 import javax.swing.*;
