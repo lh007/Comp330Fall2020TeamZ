@@ -65,8 +65,8 @@ public class EditGUI {
                 msg+="Edited: " + cb2.getSelectedItem().toString()+"\n";
                 msg+="Now: " + update+"\n";
                 JOptionPane.showMessageDialog(h, msg);
-                flag = true;
                 f.dispose();
+                flag = true;
             }
         });
 
